@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/iOS/" style="font-size: 10px;">iOS</a>
 					</div>
 				</section>
 				
@@ -213,13 +213,73 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>DCloud –Build是一款h5开发利器，号称飞一样的编码，经过简单配置可以直接打包成ipa和APK。当然这不是重点，5+runtime、MUI、流应用这几个才是今天要介绍的重点。</p>
+<p>首先我们来介绍一下5+runtime。它是通过Native.js技术，将手机操作系统的原生对象转义，映射为JS对象，在JS里编写原生代码，能够调用近40万的原生API，让HTML5接近原生水平。</p>
+<p>而MUI，它是一个可以方便开发出高性能App的框架，也是目前最接近原生App效果的框架，想要的可以去appsotre下载体验。</p>
+<p>流应用就更牛逼了。我们使用HBuild打包成流应用，可以同时适用iOS和安卓平台，而且包的体积小。极速安装，5秒内就能安装好使用了。不过目前iOS还不太适用，需要去appstore下载DCloud流应用APP，以此作为引擎才能使用，而安卓只要用360应用市场扫描即可，真的非常方便。</p>
+<p>要看详细的可以点击这里<a href="http://www.dcloud.io" target="_blank" rel="external">DCloud官网</a>慢慢研究。</p>
+<p>那么我们如何在我们自己的iOS工程中使用5+runtime呢？首先我们要去下载HTML5+SDK，HTML5+SDK是把5+ runtime封装为原生SDK，它有3个用途：</p>
+<blockquote>
+<ol>
+<li>使用HTML5+ SDK实现本地打包。</li>
+<li>通过原生代码扩展HTML5+ runtime的功能。</li>
+<li>在现有原生项目中使用HTML5+ SDK替换原有的webview，以获得更强的web增强表现。</li>
+</ol>
+</blockquote>
+<p>首先要在工程中集成HTML5+SDK。步骤如下：<br>1、第一步将DCloud文件拷贝到<br><img src="https://ooo.0o0.ooo/2016/06/29/577367a91bf00.png" alt=""><br>此文件夹下。然后将头文件Add到工程相应的文件夹中，注意头文件是Creats groups方式添加。H5资源文件也添加到相应文件夹中，注意是以Create folder references方式添加。<br>第二步将DCloud必要的库如图添加到工程中<br><img src="https://ooo.0o0.ooo/2016/06/29/577368037b06b.png" alt=""><br>然后在Build Settings里面设置好库和头文件的路径。<br>第三步在Appdelegate<br>didFinishLaunchingWithOptions方法里面设置Cloud引擎：<br><code>BOOL dcloud ＝[PDRCore initEngineWihtOptions:launchOptionswithRunMode:PDRCoreRunModeWebviewClient];</code><br>第四步在工程中添加PandoraApi.bundle和control.xml，（注意control.xml中的appid要和H5的appid一样）以Creats groups添加。<br>这样我们算是集成进去了。接下来我们要把我们在HBuild里面写好的项目放到我们的工程中去。同样是以Create folder references方式添加。然后我们再新建一个类用来展示我们的H5页面。这个类的核心代码如下：</p>
+<pre><code>- (void)addH5WebView{ 
+  if (self.h5Engine != nil){
+  NSString* pFilePath = [NSString stringWithFormat:@&quot;file://%@/%@&quot;, [NSBundle mainBundle].bundlePath, @&quot;Pandora/apps/HelloH5/www/index.html&quot;];
+  // 如果路径中包含中文，或Xcode工程的targets名为中文则需要对路径进行编码
+  //NSString* pFilePath =  (NSString *)CFURLCreateStringByAddingPercentEscapes( kCFAllocatorDefault, (CFStringRef)pTempString, NULL, NULL,  kCFStringEncodingUTF8 );
+  // 单页面集成时可以设置打开的页面是本地文件或者是网络路径
+  //NSString* pFilePath = @&quot;http://www.163.com&quot;;
+  CGRect StRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+  NSString* configPath = [NSString stringWithFormat:@&quot;file://%@/%@&quot;, [NSBundle mainBundle].bundlePath, @&quot;Pandora/apps/HelloH5/www/manifest.json&quot;];
+  appFrame = [[PDRCoreAppFrame alloc] initWithName:@&quot;WebViewID1&quot; loadURL:pFilePath frame:StRect];
+  // 单页面运行时设置Document目录
+  NSString* pStringDocumentpath = [NSString stringWithFormat:@&quot;%@/Pandora/apps/HelloH5/www/&quot;,    [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]];
+  [self.h5Engine.appManager.activeApp.appInfo loadWithConfig:configPath];
+  [self.h5Engine.appManager.activeApp.appInfo setWwwPath:pStringDocumentpath];
+  [self.h5Engine.appManager.activeApp.appWindow registerFrame:appFrame];
+  [self.containerView addSubview:appFrame];
+  }
+  }
+  #pragma mark -setters and getters
+  - (PDRCore *)h5Engine{
+  if (!_h5Engine) {
+  _h5Engine = [PDRCore Instance];
+  _h5Engine.coreDeleagete = self;
+  _h5Engine.persentViewController = self;
+  [_h5Engine showLoadingPage];
+  }
+  return _h5Engine;
+  }
+  - (UIView *)containerView{
+  if (!_containerView) {
+  _containerView = [[UIView alloc] initWithFrame:self.view.bounds];
+  _containerView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+  _containerView.backgroundColor = [UIColor redColor];
+  }
+  return _containerView;
+  }
+</code></pre><p>这样一来我们就能在我们的工程中展示我们的H5页面了。<br>看到这里，代码都已经整合好了，有的人就有疑问了，如果我们原生模块要与H5交互怎么办？也很简单，看这里就够了，讲的很详细，基本上照搬就行Native.js入门。需要注意的一点是在H5那边与原生交互的代码需要写在<code>document.addEventListener( &quot;plusready&quot;, function(){}, false );</code>里面这是一个监听事件，要H5初始化5+runtime完成后才能执行交互操作，否则交互失败。H5代码示例:<br><code>document.addEventListener( &quot;plusready&quot;, function()  {</code><br> <code>// 扩展API加载完毕，现在可以正常调用扩展API</code><br><code>// 创建UIAlertView类的实例对象</code><br><code>var view = plus.ios.newObject(&quot;UIAlertView&quot;);</code><br><code>// 设置提示对话上的内容，这里的方法名称中必须包含&#39;:&#39;字符</code><br><code>plus.ios.invoke(view,&quot;initWithTitle:message:delegate:cancelButtonTitle:otherButtonTitles:&quot;</code><br><code>, &quot;自定义标题&quot; // 提示框标题</code><br><code>, &quot;使用NJS的原生弹出框，可自定义弹出框的标题、按钮&quot;  // 提示框上显示的内容</code><br><code>, null // 操作提示框后的通知代理对象，暂不设置
+, &quot;确定(或者其他字符)&quot; // 提示框上取消按钮的文字
+, null ); // 提示框上其它按钮的文字，设置为null表示不显示
+// 调用show方法显示提示对话框，在JS中使用()语法调用对象的方法
+plus.ios.invoke(view,&quot;show&quot;);
+}, false );</code><br>到此就算简单介绍完了，感兴趣的朋友可以到它的官网进一步研究。本人水平有限，有错误之处欢迎大家指正，一起学习，共同进步！</p>
+
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
       
 
       
