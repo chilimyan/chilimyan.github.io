@@ -74,7 +74,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -186,6 +186,115 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-iOS微小型条码的扫描" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/20/iOS微小型条码的扫描/" class="article-date">
+  	<time datetime="2016-08-20T05:02:36.000Z" itemprop="datePublished">2016-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/20/iOS微小型条码的扫描/">iOS微小型条码的扫描</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前做了一个功能，要求扫描二维码和微小型条码的扫描，微小型条码有多小，当客户一拿过来的时候我一脸蒙逼。条码高度就只有这一行字的高度，在纸上密密麻麻贴了一大条。这怎么扫？我马上用ZXing，ZBar什么的试了下，成功率极低。这显然无法满足需求。然后自己琢磨用系统提供的方法实现。先上代码:  </p>
+<pre><code>/// 开始准备扫描（关键代码）
+- (void)beginScanning {
+//初始化相机设备
+AVCaptureDevice * device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+AVCaptureDeviceInput * input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+if (!input) {
+    return;
+}
+AVCaptureMetadataOutput * output = [[AVCaptureMetadataOutput alloc]init];
+[output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+
+//========核心代码==========设置扫描区域//
+CGSize size = self.view.bounds.size;
+CGRect cropRect = _scanWindow.frame;
+CGFloat p1 = size.height/size.width;
+CGFloat p2 = 1920./1080.;//使用 _session.sessionPreset = AVCaptureSessionPreset1920x1080;
+if (p1 &lt; p2) {
+    CGFloat fixHeight = self.view.bounds.size.width * 1920. / 1080.;
+    CGFloat fixPadding = (fixHeight - size.height)/2;
+    output.rectOfInterest = CGRectMake((cropRect.origin.y + fixPadding)/fixHeight,
+                                       cropRect.origin.x/size.width,
+                                       cropRect.size.height/fixHeight,
+                                       cropRect.size.width/size.width);
+} else {
+    CGFloat fixWidth = self.view.bounds.size.height * 1080. / 1920.;
+    CGFloat fixPadding = (fixWidth - size.width)/2;
+    output.rectOfInterest = CGRectMake(cropRect.origin.y/size.height,
+                                       (cropRect.origin.x + fixPadding)/fixWidth,
+                                       cropRect.size.height/size.height,
+                                       cropRect.size.width/fixWidth);
+}
+_session = [[AVCaptureSession alloc]init];
+
+//扫描小型条码使用图片输出 1920x1080提高精确度
+_session.sessionPreset = AVCaptureSessionPreset1920x1080;
+
+[_session addInput:input];
+[_session addOutput:output];
+
+//设置条码类型
+output.metadataObjectTypes=@[AVMetadataObjectTypeCode128Code];
+
+AVCaptureVideoPreviewLayer * layer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
+layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+layer.frame = self.view.layer.bounds;
+[self.view.layer insertSublayer:layer atIndex:0];
+[_session startRunning];}
+</code></pre><p>前面没什么说的，初始化video,input,output。关键问题来了，正确设置扫描区域，这一步很重要。然后将sessionPreset设置为AVCaptureSessionPreset1920x1080，因为是要扫描微小型条形码，必须要提高图片输出质量，以此提高扫描成功率。一般的扫码使用AVCaptureSessionPreset640x480就够了。其次设置你要扫描的条码类型这里是AVMetadataObjectTypeCode128Code。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-iOS与DCloud的结合" class="article article-type-post" itemscope itemprop="blogPost">
   

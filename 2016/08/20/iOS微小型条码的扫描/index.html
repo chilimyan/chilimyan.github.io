@@ -4,18 +4,30 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>博客开通啦！ | chilim</title>
+  <title>iOS微小型条码的扫描 | chilim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是第一篇博客，就这样了。">
+  <meta name="description" content="之前做了一个功能，要求扫描二维码和微小型条码的扫描，微小型条码有多小，当客户一拿过来的时候我一脸蒙逼。条码高度就只有这一行字的高度，在纸上密密麻麻贴了一大条。这怎么扫？我马上用ZXing，ZBar什么的试了下，成功率极低。这显然无法满足需求。然后自己琢磨用系统提供的方法实现。先上代码:  
+/// 开始准备扫描（关键代码）
+- (void)beginScanning {
+//初始化相机设备
+AVC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客开通啦！">
-<meta property="og:url" content="http://yoursite.com/2016/07/29/hello-world/index.html">
+<meta property="og:title" content="iOS微小型条码的扫描">
+<meta property="og:url" content="http://yoursite.com/2016/08/20/iOS微小型条码的扫描/index.html">
 <meta property="og:site_name" content="chilim">
-<meta property="og:description" content="这是第一篇博客，就这样了。">
-<meta property="og:updated_time" content="2016-08-02T13:47:14.000Z">
+<meta property="og:description" content="之前做了一个功能，要求扫描二维码和微小型条码的扫描，微小型条码有多小，当客户一拿过来的时候我一脸蒙逼。条码高度就只有这一行字的高度，在纸上密密麻麻贴了一大条。这怎么扫？我马上用ZXing，ZBar什么的试了下，成功率极低。这显然无法满足需求。然后自己琢磨用系统提供的方法实现。先上代码:  
+/// 开始准备扫描（关键代码）
+- (void)beginScanning {
+//初始化相机设备
+AVC">
+<meta property="og:updated_time" content="2016-08-20T05:06:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客开通啦！">
-<meta name="twitter:description" content="这是第一篇博客，就这样了。">
+<meta name="twitter:title" content="iOS微小型条码的扫描">
+<meta name="twitter:description" content="之前做了一个功能，要求扫描二维码和微小型条码的扫描，微小型条码有多小，当客户一拿过来的时候我一脸蒙逼。条码高度就只有这一行字的高度，在纸上密密麻麻贴了一大条。这怎么扫？我马上用ZXing，ZBar什么的试了下，成功率极低。这显然无法满足需求。然后自己琢磨用系统提供的方法实现。先上代码:  
+/// 开始准备扫描（关键代码）
+- (void)beginScanning {
+//初始化相机设备
+AVC">
   
     <link rel="alternative" href="/atom.xml" title="chilim" type="application/atom+xml">
   
@@ -189,11 +201,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iOS微小型条码的扫描" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/29/hello-world/" class="article-date">
-  	<time datetime="2016-07-29T10:02:59.000Z" itemprop="datePublished">2016-07-29</time>
+      <a href="/2016/08/20/iOS微小型条码的扫描/" class="article-date">
+  	<time datetime="2016-08-20T05:02:36.000Z" itemprop="datePublished">2016-08-20</time>
 </a>
     </div>
   
@@ -206,7 +218,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      博客开通啦！
+      iOS微小型条码的扫描
     </h1>
   
 
@@ -214,7 +226,15 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -222,7 +242,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是第一篇博客，就这样了。</p>
+        <p>之前做了一个功能，要求扫描二维码和微小型条码的扫描，微小型条码有多小，当客户一拿过来的时候我一脸蒙逼。条码高度就只有这一行字的高度，在纸上密密麻麻贴了一大条。这怎么扫？我马上用ZXing，ZBar什么的试了下，成功率极低。这显然无法满足需求。然后自己琢磨用系统提供的方法实现。先上代码:  </p>
+<pre><code>/// 开始准备扫描（关键代码）
+- (void)beginScanning {
+//初始化相机设备
+AVCaptureDevice * device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+AVCaptureDeviceInput * input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+if (!input) {
+    return;
+}
+AVCaptureMetadataOutput * output = [[AVCaptureMetadataOutput alloc]init];
+[output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+
+//========核心代码==========设置扫描区域//
+CGSize size = self.view.bounds.size;
+CGRect cropRect = _scanWindow.frame;
+CGFloat p1 = size.height/size.width;
+CGFloat p2 = 1920./1080.;//使用 _session.sessionPreset = AVCaptureSessionPreset1920x1080;
+if (p1 &lt; p2) {
+    CGFloat fixHeight = self.view.bounds.size.width * 1920. / 1080.;
+    CGFloat fixPadding = (fixHeight - size.height)/2;
+    output.rectOfInterest = CGRectMake((cropRect.origin.y + fixPadding)/fixHeight,
+                                       cropRect.origin.x/size.width,
+                                       cropRect.size.height/fixHeight,
+                                       cropRect.size.width/size.width);
+} else {
+    CGFloat fixWidth = self.view.bounds.size.height * 1080. / 1920.;
+    CGFloat fixPadding = (fixWidth - size.width)/2;
+    output.rectOfInterest = CGRectMake(cropRect.origin.y/size.height,
+                                       (cropRect.origin.x + fixPadding)/fixWidth,
+                                       cropRect.size.height/size.height,
+                                       cropRect.size.width/fixWidth);
+}
+_session = [[AVCaptureSession alloc]init];
+
+//扫描小型条码使用图片输出 1920x1080提高精确度
+_session.sessionPreset = AVCaptureSessionPreset1920x1080;
+
+[_session addInput:input];
+[_session addOutput:output];
+
+//设置条码类型
+output.metadataObjectTypes=@[AVMetadataObjectTypeCode128Code];
+
+AVCaptureVideoPreviewLayer * layer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
+layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+layer.frame = self.view.layer.bounds;
+[self.view.layer insertSublayer:layer atIndex:0];
+[_session startRunning];}
+</code></pre><p>前面没什么说的，初始化video,input,output。关键问题来了，正确设置扫描区域，这一步很重要。然后将sessionPreset设置为AVCaptureSessionPreset1920x1080，因为是要扫描微小型条形码，必须要提高图片输出质量，以此提高扫描成功率。一般的扫码使用AVCaptureSessionPreset640x480就够了。其次设置你要扫描的条码类型这里是AVMetadataObjectTypeCode128Code。</p>
 
       
     </div>
@@ -232,15 +300,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/08/20/iOS与DCloud的结合/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iOS与DCloud的结合
-        
-      </div>
-    </a>
   
+    <a href="/2016/08/20/iOS与DCloud的结合/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS与DCloud的结合</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
