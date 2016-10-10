@@ -18,18 +18,20 @@
   
     <link rel="icon" href="//favicon.png">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <script src="/style.js"></script>
+  
+
 </head>
 
 <body>
   <div id="container">
     <div class="left-col">
-    <div class="overlay"></div>
+      <div class="overlay"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
+			<img src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
 			
 		</a>
 
@@ -39,100 +41,62 @@
 
 		
 
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						 <li>菜单</li>
-    <li>标签</li>
-    
-    
-    <li>关于</li>
-    
-					</ul>
-				</div>
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/tags/随笔">随笔</a></li>
+	        
+				<li><a href="/关于我">关于我</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/chilimyan" title="github">github</a>
+		        
 			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/tags/随笔">随笔</a></li>
-				        
-							<li><a href="/关于我">关于我</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/chilimyan" title="github">github</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/DCloud/" style="font-size: 10px;">DCloud</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">不断超越自己</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
+		</nav>
+	</header>		
 </div>
 
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
   	<div class="overlay">
-  		<div class="slider-trigger"></div>
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
   		<h1 class="header-author js-mobile-header hide">chilimyan</h1>
   	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
 				
-					<img lazy-src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
+					<img src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
 				
 			</div>
 			<hgroup>
@@ -150,7 +114,6 @@
 		        
 					<li><a href="/关于我">关于我</a></li>
 		        
-		        <div class="clearfix"></div>
 				</ul>
 			</nav>
 			<nav class="header-nav">
@@ -165,15 +128,9 @@
 </nav>
 
       <div class="body-wrap">
+        
   
     <article id="post-we-are-married" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/09/10/we-are-married/" class="article-date">
-  	<time datetime="2016-09-10T12:26:34.000Z" itemprop="datePublished">2016-09-10</time>
-</a>
-    </div>
-  
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -188,7 +145,6 @@
   
 
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -205,23 +161,24 @@
 
       
     </div>
-    
     <div class="article-info article-info-index">
       
+      <a href="/2016/09/10/we-are-married/" class="archive-article-date">
+  	<time datetime="2016-09-10T12:26:34.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-10</time>
+</a>
       
 	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 	</div>
 
       
 
-      
       <div class="clearfix"></div>
     </div>
-    
   </div>
-  
 </article>
+
 
 
 
@@ -233,13 +190,6 @@
 
   
     <article id="post-iOS微小型条码的扫描" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/20/iOS微小型条码的扫描/" class="article-date">
-  	<time datetime="2016-08-20T05:02:36.000Z" itemprop="datePublished">2016-08-20</time>
-</a>
-    </div>
-  
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -254,34 +204,33 @@
   
 
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>&#x4E4B;&#x524D;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x8981;&#x6C42;&#x626B;&#x63CF;&#x4E8C;&#x7EF4;&#x7801;&#x548C;&#x5FAE;&#x5C0F;&#x578B;&#x6761;&#x7801;&#x7684;&#x626B;&#x63CF;&#xFF0C;&#x5FAE;&#x5C0F;&#x578B;&#x6761;&#x7801;&#x6709;&#x591A;&#x5C0F;&#xFF0C;&#x5F53;&#x5BA2;&#x6237;&#x4E00;&#x62FF;&#x8FC7;&#x6765;&#x7684;&#x65F6;&#x5019;&#x6211;&#x4E00;&#x8138;&#x8499;&#x903C;&#x3002;&#x6761;&#x7801;&#x9AD8;&#x5EA6;&#x5C31;&#x53EA;&#x6709;&#x8FD9;&#x4E00;&#x884C;&#x5B57;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x5728;&#x7EB8;&#x4E0A;&#x5BC6;&#x5BC6;&#x9EBB;&#x9EBB;&#x8D34;&#x4E86;&#x4E00;&#x5927;&#x6761;&#x3002;&#x8FD9;&#x600E;&#x4E48;&#x626B;&#xFF1F;&#x6211;&#x9A6C;&#x4E0A;&#x7528;ZXing&#xFF0C;ZBar&#x4EC0;&#x4E48;&#x7684;&#x8BD5;&#x4E86;&#x4E0B;&#xFF0C;&#x6210;&#x529F;&#x7387;&#x6781;&#x4F4E;&#x3002;&#x8FD9;&#x663E;&#x7136;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;&#x7136;&#x540E;&#x81EA;&#x5DF1;&#x7422;&#x78E8;&#x7528;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x3002;</p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/08/20/iOS微小型条码的扫描/#more">more >></a>
+        </p>
       
     </div>
-    
     <div class="article-info article-info-index">
       
+      <a href="/2016/08/20/iOS微小型条码的扫描/" class="archive-article-date">
+  	<time datetime="2016-08-20T05:02:36.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-08-20</time>
+</a>
       
 	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 	</div>
 
       
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/08/20/iOS微小型条码的扫描/#more">more >></a>
-        </p>
-      
       <div class="clearfix"></div>
     </div>
-    
   </div>
-  
 </article>
+
 
 
 
@@ -293,13 +242,6 @@
 
   
     <article id="post-iOS与DCloud的结合" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/20/iOS与DCloud的结合/" class="article-date">
-  	<time datetime="2016-08-20T04:34:48.000Z" itemprop="datePublished">2016-08-20</time>
-</a>
-    </div>
-  
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -314,7 +256,6 @@
   
 
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -323,29 +264,29 @@
 <p>&#x800C;MUI&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;&#x51FA;&#x9AD8;&#x6027;&#x80FD;App&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x4E5F;&#x662F;&#x76EE;&#x524D;&#x6700;&#x63A5;&#x8FD1;&#x539F;&#x751F;App&#x6548;&#x679C;&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x60F3;&#x8981;&#x7684;&#x53EF;&#x4EE5;&#x53BB;appsotre&#x4E0B;&#x8F7D;&#x4F53;&#x9A8C;&#x3002;</p>
 <p>&#x6D41;&#x5E94;&#x7528;&#x5C31;&#x66F4;&#x725B;&#x903C;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x4F7F;&#x7528;HBuild&#x6253;&#x5305;&#x6210;&#x6D41;&#x5E94;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x9002;&#x7528;iOS&#x548C;&#x5B89;&#x5353;&#x5E73;&#x53F0;&#xFF0C;&#x800C;&#x4E14;&#x5305;&#x7684;&#x4F53;&#x79EF;&#x5C0F;&#x3002;&#x6781;&#x901F;&#x5B89;&#x88C5;&#xFF0C;5&#x79D2;&#x5185;&#x5C31;&#x80FD;&#x5B89;&#x88C5;&#x597D;&#x4F7F;&#x7528;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#x76EE;&#x524D;iOS&#x8FD8;&#x4E0D;&#x592A;&#x9002;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x53BB;appstore&#x4E0B;&#x8F7D;DCloud&#x6D41;&#x5E94;&#x7528;APP&#xFF0C;&#x4EE5;&#x6B64;&#x4F5C;&#x4E3A;&#x5F15;&#x64CE;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#xFF0C;&#x800C;&#x5B89;&#x5353;&#x53EA;&#x8981;&#x7528;360&#x5E94;&#x7528;&#x5E02;&#x573A;&#x626B;&#x63CF;&#x5373;&#x53EF;&#xFF0C;&#x771F;&#x7684;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x3002;</p>
 <p>&#x8981;&#x770B;&#x8BE6;&#x7EC6;&#x7684;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x8FD9;&#x91CC;<a href="http://www.dcloud.io">DCloud&#x5B98;&#x7F51;</a>&#x6162;&#x6162;&#x7814;&#x7A76;&#x3002;<br></p>
+        <p class="article-more-link">
+          <a class="article-more-a"  href="/2016/08/20/iOS与DCloud的结合/#more">more >></a>
+        </p>
       
     </div>
-    
     <div class="article-info article-info-index">
       
+      <a href="/2016/08/20/iOS与DCloud的结合/" class="archive-article-date">
+  	<time datetime="2016-08-20T04:34:48.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-08-20</time>
+</a>
       
 	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DCloud/">DCloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 	</div>
 
       
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/08/20/iOS与DCloud的结合/#more">more >></a>
-        </p>
-      
       <div class="clearfix"></div>
     </div>
-    
   </div>
-  
 </article>
+
 
 
 
@@ -357,13 +298,6 @@
 
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/20/hello-world/" class="article-date">
-  	<time datetime="2015-08-20T05:02:36.000Z" itemprop="datePublished">2015-08-20</time>
-</a>
-    </div>
-  
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -378,7 +312,6 @@
   
 
       </header>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -386,22 +319,22 @@
 
       
     </div>
-    
     <div class="article-info article-info-index">
       
+      <a href="/2015/08/20/hello-world/" class="archive-article-date">
+  	<time datetime="2015-08-20T05:02:36.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-08-20</time>
+</a>
       
 	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 	</div>
 
       
 
-      
       <div class="clearfix"></div>
     </div>
-    
   </div>
-  
 </article>
 
 
@@ -412,9 +345,12 @@
 
 
 
+
   
   
-</div>
+
+
+      </div>
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
@@ -428,11 +364,7 @@
   </div>
 </footer>
     </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-
-<script>
+    <script>
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
@@ -442,15 +374,13 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
 	}
 </script>
-<script src="//7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
 
-
-
-
+<script src="/./main.js"></script>
 
 
 <script type="text/x-mathjax-config">
@@ -470,10 +400,116 @@ MathJax.Hub.Queue(function() {
 });
 </script>
 
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/DCloud/" style="font-size: 10px;">DCloud</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不断超越自己</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
   </div>
 </body>
 </html>
