@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Runtime学习笔记 | chilim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Runtime &amp;#x5B66;&amp;#x4E60;runtime&amp;#x662F;&amp;#x4EC0;&amp;#x4E48;runtime&amp;#x662F;&amp;#x7CFB;&amp;#x7EDF;&amp;#x8FD0;&amp;#x884C;&amp;#x65F6;&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x673A;&amp;#x5236;&amp;#xFF0C;C&amp;#x8BED;&amp;#x8A00;&amp;#x4E2D;&amp;#xFF0C;&amp;#x51FD;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runtime学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/Runtime学习笔记/index.html">
+<meta property="og:site_name" content="chilim">
+<meta property="og:description" content="Runtime &amp;#x5B66;&amp;#x4E60;runtime&amp;#x662F;&amp;#x4EC0;&amp;#x4E48;runtime&amp;#x662F;&amp;#x7CFB;&amp;#x7EDF;&amp;#x8FD0;&amp;#x884C;&amp;#x65F6;&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x673A;&amp;#x5236;&amp;#xFF0C;C&amp;#x8BED;&amp;#x8A00;&amp;#x4E2D;&amp;#xFF0C;&amp;#x51FD;&amp;">
+<meta property="og:updated_time" content="2016-12-23T07:41:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Runtime学习笔记">
+<meta name="twitter:description" content="Runtime &amp;#x5B66;&amp;#x4E60;runtime&amp;#x662F;&amp;#x4EC0;&amp;#x4E48;runtime&amp;#x662F;&amp;#x7CFB;&amp;#x7EDF;&amp;#x8FD0;&amp;#x884C;&amp;#x65F6;&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x673A;&amp;#x5236;&amp;#xFF0C;C&amp;#x8BED;&amp;#x8A00;&amp;#x4E2D;&amp;#xFF0C;&amp;#x51FD;&amp;">
+  
+    <link rel="alternative" href="/atom.xml" title="chilim" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">chilimyan</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/随笔">随笔</a></li>
+	        
+				<li><a href="/关于我">关于我</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/chilimyan" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">chilimyan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">chilimyan</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+					<li><a href="/关于我">关于我</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chilimyan" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-Runtime学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Runtime学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Runtime-&#x5B66;&#x4E60;"><a href="#Runtime-&#x5B66;&#x4E60;" class="headerlink" title="Runtime &#x5B66;&#x4E60;"></a>Runtime &#x5B66;&#x4E60;</h1><h2 id="runtime&#x662F;&#x4EC0;&#x4E48;"><a href="#runtime&#x662F;&#x4EC0;&#x4E48;" class="headerlink" title="runtime&#x662F;&#x4EC0;&#x4E48;"></a>runtime&#x662F;&#x4EC0;&#x4E48;</h2><p>runtime&#x662F;&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x4E00;&#x4E9B;&#x673A;&#x5236;&#xFF0C;C&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x51B3;&#x5B9A;&#x8C03;&#x7528;&#x54EA;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x3002;<br>OC&#x4E0D;&#x540C;&#xFF0C;OC&#x662F;&#x52A8;&#x6001;&#x8BED;&#x8A00;&#xFF0C;&#x6240;&#x8C13;&#x7684;&#x52A8;&#x6001;&#x662F;&#x6307;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x66F4;&#x6539;&#x3002;&#x8FD9;&#x65F6;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x7528;&#x5230;runtime&#x3002;OC&#x662F;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x90FD;&#x4F1A;&#x6700;&#x7EC8;&#x8F6C;&#x5316;&#x6210;C&#x8BED;&#x8A00;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;runtime&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;runtime&#x4EE3;&#x7801;&#x6765;&#x6539;&#x53D8;&#x4EE3;&#x7801;&#x6700;&#x7EC8;&#x7684;&#x6267;&#x884C;&#x6548;&#x679C;&#x3002;<a id="more"></a></p>
+<h2 id="runtime&#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;"><a href="#runtime&#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;" class="headerlink" title="runtime&#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;"></a>runtime&#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;</h2><p>runtime&#x4E3B;&#x8981;&#x901A;&#x8FC7;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x8FD0;&#x884C;&#x3002;&#x6D88;&#x606F;&#x673A;&#x5236;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x4E3B;&#x8981;&#x662F;&#x8FD9;&#x4E2A;<code>&lt;objc/message.h&gt;</code><br>&#x5148;&#x6765;&#x770B;runtime&#x7684;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x673A;&#x5236;<br><code>void objc_msgSend(id self, SEL cmd, ...)</code><br>&#x6BD4;&#x5982;OC&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#xFF1A;<code>id returnValue = [someObject messageName:parameter];</code><br>someObject&#x53EB;&#x505A;&#x201C;&#x63A5;&#x6536;&#x8005;&#x201D;&#xFF08;receiver&#xFF09;&#xFF0C;messageName&#x662F;&#x65B9;&#x6CD5;&#xFF08;selector&#xFF09;&#x3002;&#x65B9;&#x6CD5;&#x4E0E;&#x53C2;&#x6570;&#x5408;&#x8D77;&#x6765;&#x79F0;&#x4E3A;&#x201C;&#x6D88;&#x606F;&#x201D;&#xFF08;message&#xFF09;<br>&#x5728;runtime&#x65F6;&#x5C31;&#x4F1A;&#x8F6C;&#x5316;&#x4E3A;&#xFF1A;<code>id returnValue = objc_msgSend(someObject,@selector(messageName:),parameter);</code><br>&#x5728;&#x6211;&#x4EEC;&#x70B9;&#x5F00;<code>&lt;objc/runtime.h&gt;</code>&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x3002;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5C31;&#x662F;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x7C7B;&#x3002;</p>
+<figure class="highlight plain"><figcaption><span>objc_class {</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line"></div><div class="line">#if !__OBJC2__</div><div class="line">Class super_class                                        OBJC2_UNAVAILABLE;</div><div class="line">const char *name                                         OBJC2_UNAVAILABLE;</div><div class="line">long version                                             OBJC2_UNAVAILABLE;</div><div class="line">long info                                                OBJC2_UNAVAILABLE;</div><div class="line">long instance_size                                       OBJC2_UNAVAILABLE;</div><div class="line">struct objc_ivar_list *ivars                             OBJC2_UNAVAILABLE;</div><div class="line">struct objc_method_list **methodLists                    OBJC2_UNAVAILABLE;</div><div class="line">struct objc_cache *cache                                 OBJC2_UNAVAILABLE;</div><div class="line">struct objc_protocol_list *protocols                     OBJC2_UNAVAILABLE;</div><div class="line">#endif</div><div class="line"></div><div class="line">} OBJC2_UNAVAILABLE;</div></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x7C7B;&#x4E2D;&#x6709;<code>struct objc_method_list **methodLists&#x548C;struct objc_cache *cache</code><br>&#x4E00;&#x4E2A;&#x662F;&#x8FD9;&#x4E2A;&#x7C7B;&#x6240;&#x5C5E;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x7F13;&#x5B58;&#x5217;&#x8868;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x5411;&#x67D0;&#x4E2A;&#x7C7B;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#x9996;&#x5148;&#x4F1A;&#x5148;&#x5728;&#x8BE5;&#x7C7B;&#x7684;&#x7F13;&#x5B58;&#x5217;&#x8868;&#x67E5;&#x627E;&#x662F;&#x6709;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x6548;&#x7387;&#x4F1A;&#x5927;&#x5927;&#x63D0;&#x9AD8;&#xFF0C;&#x5F53;&#x7F13;&#x5B58;&#x5217;&#x8868;&#x91CC;&#x9762;&#x6CA1;&#x6709;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x5230;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x91CC;&#x9762;&#x67E5;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#x91CC;&#x9762;&#x4E5F;&#x6CA1;&#x6709;&#xFF0C;&#x90A3;&#x5C31;&#x4F1A;&#x53BB;&#x7236;&#x7C7B;&#x67E5;&#x627E;&#xFF0C;&#x76F4;&#x5230;<code>NSObject</code>&#xFF0C;&#x627E;&#x5230;&#x540E;&#x5C31;&#x628A;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x653E;&#x5230;&#x7F13;&#x5B58;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x4E0B;&#x6B21;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x80FD;&#x76F4;&#x63A5;&#x5728;&#x7F13;&#x5B58;&#x5217;&#x8868;&#x4E2D;&#x627E;&#x5230;&#x3002;<br><code>objc_msgSend</code>&#x65B9;&#x6CD5;&#x662F;&#x7528;&#x5F97;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#xFF0C;&#x5934;&#x6587;&#x4EF6;&#x4E0B;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x7528;&#x7684;&#x4E0D;&#x591A;&#xFF0C;&#x662F;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x8D58;&#x8FF0;&#x4E86;&#x3002;<br>&#x5982;&#x679C;&#x4E0A;&#x9762;&#x6700;&#x7EC8;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x542F;&#x52A8;<br>[&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x673A;&#x5236;](<a href="http://book.51cto.com/art/201403/432146.html" target="_blank" rel="external">http://book.51cto.com/art/201403/432146.html</a></p>
+<h2 id="runtime&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x5C5E;&#x6027;&#x89E3;&#x6790;"><a href="#runtime&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x5C5E;&#x6027;&#x89E3;&#x6790;" class="headerlink" title="runtime&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x5C5E;&#x6027;&#x89E3;&#x6790;"></a>runtime&#x76F8;&#x5173;&#x65B9;&#x6CD5;&#x5C5E;&#x6027;&#x89E3;&#x6790;</h2><p>&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x5728;<code>&lt;objc/runtime.h&gt;</code>&#x6587;&#x4EF6;&#x5F80;&#x4E0B;&#x770B;&#x3002;<br><code>id object_copy(id obj, size_t size)</code><br>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x62F7;&#x8D1D;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x7528;&#x4E8E;MRC&#xFF0C;&#x4E0D;&#x9002;&#x7528;ARC&#x3002;<br><code>id object_dispose(id obj)</code><br>&#x91CA;&#x653E;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6240;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;<br><code>object_getClassName(id obj)</code><br>&#x8FD4;&#x56DE;&#x7C7B;&#x7684;&#x540D;&#x79F0;<br><code>void *object_getIndexedIvars(id obj)</code><br>&#x5F53;&#x4F60;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Objective-C&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;runtime&#x4F1A;&#x5728;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x533A;&#x57DF;&#x540E;&#x9762;&#x518D;&#x5206;&#x914D;&#x4E00;&#x70B9;&#x989D;&#x5916;&#x7684;&#x7A7A;&#x95F4;&#x3002;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#x76EE;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x4F60;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x8FD9;&#x5757;&#x7A7A;&#x95F4;&#x8D77;&#x59CB;&#x6307;&#x9488;&#xFF08;&#x7528; <code>object_getIndexedIvars</code>&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x7D22;&#x5F15;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;<code>&#xFF08;ivars&#xFF09;
+id object_getIvar(id obj, Ivar ivar)</code><br>&#x83B7;&#x5F97;&#x7C7B;&#x7684;&#x53D8;&#x91CF;&#x4E0E;<code>Ivar object_getInstanceVariable(id obj, const char *name, void **outValue)</code>&#x914D;&#x5408;&#x4F7F;&#x7528;<br><code>void object_setIvar(id obj, Ivar ivar, id value)</code><br>&#x7ED9;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x65B0;&#x503C;&#x4E0E;<code>Ivar object_getInstanceVariable(id obj, const char *name, void **outValue)</code>&#x914D;&#x5408;&#x4F7F;&#x7528;</p>
+<ul>
+<li><strong>&#x5907;&#x6CE8;</strong><br>class&#x548C;metaclass&#x7684;&#x533A;&#x522B;<br><code>class &#x662F; instance object &#x7684;&#x7C7B;&#x7C7B;&#x578B;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x5411;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF08;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF09;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8BE5;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x7684; class &#x7ED3;&#x6784;&#x7684; methodlists &#x4E2D;&#x53BB;&#x67E5;&#x627E;&#x54CD;&#x5E94;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x627E;&#x5230;&#x5339;&#x914D;&#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;&#x5219;&#x5728;&#x8BE5; class &#x7684;&#x7236;&#x7C7B;&#x4E2D;&#x7684; methodlists &#x53BB;&#x67E5;&#x627E;&#xFF08;&#x67E5;&#x627E;&#x94FE;&#x4E3A;&#x4E0A;&#x56FE;&#x7684;&#x4E2D;&#x95F4;&#x90A3;&#x4E00;&#x6392;&#xFF09;&#x3002;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5411;str &#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x53D1;&#x9001; lowercaseString &#x6D88;&#x606F;&#xFF0C;&#x4F1A;&#x5728; NSString &#x7C7B;&#x7ED3;&#x6784;&#x7684; methodlists &#x4E2D;&#x53BB;&#x67E5;&#x627E; lowercaseString &#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;&#x3002;NSString * str;
+[str lowercaseString];</code><br><code>metaclass &#x662F; class object &#x7684;&#x7C7B;&#x7C7B;&#x578B;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x5411;&#x7C7B;&#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF08;&#x7C7B;&#x65B9;&#x6CD5;&#xFF09;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8BE5;&#x7C7B;&#x5BF9;&#x8C61;&#x7684; metaclass &#x7ED3;&#x6784;&#x7684; methodlists &#x4E2D;&#x53BB;&#x67E5;&#x627E;&#x54CD;&#x5E94;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x5339;&#x914D;&#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;&#x5219;&#x5728;&#x8BE5; metaclass &#x7684;&#x7236;&#x7C7B;&#x4E2D;&#x7684; methodlists &#x53BB;&#x67E5;&#x627E;&#xFF08;&#x67E5;&#x627E;&#x94FE;&#x4E3A;&#x4E0A;&#x56FE;&#x7684;&#x6700;&#x53F3;&#x8FB9;&#x90A3;&#x4E00;&#x6392;&#xFF09;&#x3002;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x5411; NSString &#x7C7B;&#x5BF9;&#x8C61;&#x53D1;&#x9001; stringWithString &#x6D88;&#x606F;&#xFF0C;&#x4F1A;&#x5728; NSString &#x7684; metaclass &#x7C7B;&#x7ED3;&#x6784;&#x7684; methodlists &#x4E2D;&#x53BB;&#x67E5;&#x627E; stringWithString &#x7684;&#x54CD;&#x5E94;&#x51FD;&#x6570;&#x3002;[NSString stringWithString:@&quot;str&quot;];</code></li>
+</ul>
+<p><code>Ivar *class_copyIvarList(Class cls, unsigned int *outCount)</code><br>&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x90A3;&#x4E48;&#x548C;<code>class_copyPropertyList</code>&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#x5462;&#xFF1F;<br><code>class_copyPropertyList</code>&#x8FD4;&#x56DE;&#x7684;&#x4EC5;&#x4EC5;&#x662F;&#x5BF9;&#x8C61;&#x7C7B;&#x7684;&#x5C5E;&#x6027;(@property&#x7533;&#x660E;&#x7684;&#x5C5E;&#x6027;)&#xFF0C;&#x800C;<code>class_copyIvarList</code>&#x8FD4;&#x56DE;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x548C;&#x53D8;&#x91CF;(&#x5305;&#x62EC;&#x5728;@interface&#x5927;&#x62EC;&#x53F7;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;)<br><code>class_getInstanceMethod</code><br>&#x5F97;&#x5230;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;<br><code>class_getClassMethod</code><br>&#x5F97;&#x5230;&#x7C7B;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;<br><code>class_copyMethodList</code><br>&#x83B7;&#x53D6;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5217;&#x8868;&#xFF0C;&#x5305;&#x62EC;get&#x548C;set&#x65B9;&#x6CD5;<br><code>class_conformsToProtocol</code><br>&#x662F;&#x53EA;&#x68C0;&#x67E5;&#x5F53;&#x524D;&#x7C7B;&#x7B26;&#x4E0D;&#x7B26;&#x5408;&#x534F;&#x8BAE;<br><code>class_addMethod</code><br>&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;<br><code>class_replaceMethod</code><br>&#x52A8;&#x6001;&#x66FF;&#x6362;&#x65B9;&#x6CD5;<br><code>class_addIvar</code><br>&#x7ED9;&#x7C7B;&#x52A8;&#x6001;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x548C;<code>class_addProperty</code>&#x4E00;&#x6837;<br><code>class_replaceProperty</code><br>&#x5C5E;&#x6027;&#x66FF;&#x6362;<br><code>class_createInstance</code><br>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#xFF0C;<br><code>method_getName</code><br>&#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x540D;&#x79F0;<br><code>method_exchangeImplementations</code><br>&#x52A8;&#x6001;&#x4EA4;&#x6362;2&#x4E2A;&#x65B9;&#x6CD5;<br><code>objc_getAssociatedObject</code><br>&#x5173;&#x8054;&#x5BF9;&#x8C61;<br><code>objc_removeAssociatedObjects</code><br>&#x79FB;&#x9664;&#x5173;&#x8054;&#x5BF9;&#x8C61;</p>
+<h2 id="runtime&#x7684;&#x5E38;&#x89C1;&#x4F7F;&#x7528;&#x573A;&#x666F;"><a href="#runtime&#x7684;&#x5E38;&#x89C1;&#x4F7F;&#x7528;&#x573A;&#x666F;" class="headerlink" title="runtime&#x7684;&#x5E38;&#x89C1;&#x4F7F;&#x7528;&#x573A;&#x666F;"></a>runtime&#x7684;&#x5E38;&#x89C1;&#x4F7F;&#x7528;&#x573A;&#x666F;</h2><p>1&#x3001;&#x52A8;&#x6001;&#x53D8;&#x91CF;&#x63A7;&#x5236;</p>
+<figure class="highlight plain"><figcaption><span>= [Person new];</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">_person.name = @&quot;xiaoming&quot;;</div><div class="line">NSLog(@&quot;XiaoMing first answer is %@&quot;,self.person.name);</div><div class="line">unsigned int count = 0;</div><div class="line">Ivar *ivar = class_copyIvarList([self.person class], &amp;count);</div><div class="line">for (int i = 0; i&lt;count; i++) {</div><div class="line">Ivar var = ivar[i];</div><div class="line">const char *varName = ivar_getName(var);</div><div class="line">NSString *proname = [NSString stringWithUTF8String:varName];</div><div class="line"></div><div class="line">if ([proname isEqualToString:@&quot;_name&quot;]) {   //&#x8FD9;&#x91CC;&#x522B;&#x5FD8;&#x4E86;&#x7ED9;&#x5C5E;&#x6027;&#x52A0;&#x4E0B;&#x5212;&#x7EBF;</div><div class="line">object_setIvar(self.person, var, @&quot;daming&quot;);</div><div class="line">break;</div><div class="line">}</div><div class="line">}</div><div class="line">NSLog(@&quot;XiaoMing change name  is %@&quot;,self.person.name);</div></pre></td></tr></table></figure>
+<p>2&#x3001;&#x52A8;&#x6001;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;</p>
+<figure class="highlight plain"><figcaption><span>= [Person new];</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class_addMethod([self.person class], @selector(guess), (IMP)guessAnswer, &quot;v@:&quot;);</div><div class="line">if ([self.person respondsToSelector:@selector(guess)]) {</div><div class="line">//Method method = class_getInstanceMethod([self.xiaoMing class], @selector(guess));</div><div class="line">[self.person performSelector:@selector(guess)];</div><div class="line"></div><div class="line">} else{</div><div class="line">NSLog(@&quot;error&quot;);</div><div class="line">}</div><div class="line">//&#x65B0;&#x589E;&#x7684;&#x65B9;&#x6CD5;</div><div class="line">void guessAnswer(id self,SEL _cmd){</div><div class="line"></div><div class="line">NSLog(@&quot;add new methods&quot;);</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>3&#x3001;&#x52A8;&#x6001;&#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;</p>
+<figure class="highlight plain"><figcaption><span>= [Person new];</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Method m1 = class_getInstanceMethod([self.person class], @selector(sayName));</div><div class="line">Method m2 = class_getInstanceMethod([self.person class], @selector(saySex));</div><div class="line"></div><div class="line">method_exchangeImplementations(m1, m2);</div><div class="line">- (void)sayName:(id)sender {</div><div class="line">NSLog(@&quot;%@&quot;,_person.sayName);</div><div class="line">}</div><div class="line">- (void)saySex:(id)sender {</div><div class="line">NSLog(@&quot;%@&quot;,_person.saySex);</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>4&#x3001;&#x62E6;&#x622A;&#x5E76;&#x66FF;&#x6362;&#x65B9;&#x6CD5;</p>
+<figure class="highlight plain"><figcaption><span>[self.person class],&#x4E0D;&#x8FC7;&#x8981;&#x5148;&#x521D;&#x59CB;&#x5316;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Method m1 = class_getInstanceMethod([Person class], @selector(sayName));</div><div class="line">Method m2 = class_getInstanceMethod([Tool class], @selector(changeMethod));</div><div class="line"></div><div class="line">method_exchangeImplementations(m1, m2);</div><div class="line">&#x6B64;&#x65F6;&#x8C03;&#x7528;[self.person sayName]&#x5219;&#x4F1A;&#x6267;&#x884C;[self.tool changeMethod]</div></pre></td></tr></table></figure>
+<p>5&#x3001;&#x5728;&#x65B9;&#x6CD5;&#x4E0A;&#x589E;&#x52A0;&#x989D;&#x5916;&#x529F;&#x80FD;</p>
+<figure class="highlight plain"><figcaption><span>(void)load {</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">static dispatch_once_t onceToken;</div><div class="line">dispatch_once(&amp;onceToken, ^{</div><div class="line"></div><div class="line">Class selfClass = [self class];</div><div class="line"></div><div class="line">SEL oriSEL = @selector(sendAction:to:forEvent:);</div><div class="line">Method oriMethod = class_getInstanceMethod(selfClass, oriSEL);</div><div class="line"></div><div class="line">SEL cusSEL = @selector(mySendAction:to:forEvent:);</div><div class="line">Method cusMethod = class_getInstanceMethod(selfClass, cusSEL);</div><div class="line"></div><div class="line">BOOL addSucc = class_addMethod(selfClass, oriSEL, method_getImplementation(cusMethod), method_getTypeEncoding(cusMethod));</div><div class="line">if (addSucc) {</div><div class="line">class_replaceMethod(selfClass, cusSEL, method_getImplementation(oriMethod), method_getTypeEncoding(oriMethod));</div><div class="line">}else {</div><div class="line">method_exchangeImplementations(oriMethod, cusMethod);</div><div class="line">}</div><div class="line"></div><div class="line">});</div><div class="line">}</div><div class="line"></div><div class="line">- (void)mySendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {</div><div class="line">[[Tool sharedManager] addCount];</div><div class="line">[self mySendAction:action to:target forEvent:event];</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x62D3;&#x5C55;&#x4E86;&#x6309;&#x94AE;&#x7684;&#x70B9;&#x51FB;&#x529F;&#x80FD;&#xFF0C;&#x70B9;&#x51FB;&#x65F6;&#x65B0;&#x589E;&#x4E86;&#x70B9;&#x51FB;&#x6B21;&#x6570;&#x8BA1;&#x7B97;<br>6&#x3001;&#x5B9E;&#x73B0;NSCoding&#x7684;&#x81EA;&#x52A8;&#x5F52;&#x6863;&#x548C;&#x89E3;&#x6863;</p>
+<figure class="highlight plain"><figcaption><span>(void)encodeWithCoder:(NSCoder *)encoder</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">{</div><div class="line">unsigned int count = 0;</div><div class="line"></div><div class="line">Ivar *ivars = class_copyIvarList([Movie class], &amp;count);</div><div class="line"></div><div class="line">for (int i = 0; i&lt;count; i++) {</div><div class="line">// &#x53D6;&#x51FA;i&#x4F4D;&#x7F6E;&#x5BF9;&#x5E94;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;</div><div class="line">Ivar ivar = ivars[i];</div><div class="line">// &#x67E5;&#x770B;&#x6210;&#x5458;&#x53D8;&#x91CF;</div><div class="line"></div><div class="line">const char *name = ivar_getName(ivar);</div><div class="line">// &#x5F52;&#x6863;</div><div class="line">NSString *key = [NSString stringWithUTF8String:name];</div><div class="line">id value = [self valueForKey:key];</div><div class="line">[encoder encodeObject:value forKey:key];</div><div class="line"></div><div class="line">}</div><div class="line"></div><div class="line">free(ivars);</div><div class="line"></div><div class="line"></div><div class="line">}</div><div class="line"></div><div class="line">- (id)initWithCoder:(NSCoder *)decoder</div><div class="line"></div><div class="line">{</div><div class="line">if (self = [super init]) {</div><div class="line">unsigned int count = 0;</div><div class="line">Ivar *ivars = class_copyIvarList([Movie class], &amp;count);</div><div class="line">for (int i = 0; i&lt;count; i++) {</div><div class="line">// &#x53D6;&#x51FA;i&#x4F4D;&#x7F6E;&#x5BF9;&#x5E94;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;</div><div class="line">Ivar ivar = ivars[i];</div><div class="line">// &#x67E5;&#x770B;&#x6210;&#x5458;&#x53D8;&#x91CF;</div><div class="line">const char *name = ivar_getName(ivar);</div><div class="line">// &#x5F52;&#x6863;</div><div class="line">NSString *key = [NSString stringWithUTF8String:name];</div><div class="line">id value = [decoder decodeObjectForKey:key];</div><div class="line">// &#x8BBE;&#x7F6E;&#x5230;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x8EAB;&#x4E0A;</div><div class="line">[self setValue:value forKey:key];</div><div class="line"></div><div class="line">}</div><div class="line">free(ivars);</div><div class="line"></div><div class="line">}</div><div class="line"></div><div class="line">return self;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>7&#x3001;&#x5B9E;&#x73B0;&#x5B57;&#x5178;&#x8F6C;&#x6A21;&#x578B;&#x7684;&#x81EA;&#x52A8;&#x8F6C;&#x6362;</p>
+<figure class="highlight plain"><figcaption><span>&#x5B57;&#x5178;&#x8F6C;&#x6A21;&#x578B;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)objectWithDict:(NSDictionary *)dict</div><div class="line">{</div><div class="line">// &#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x6A21;&#x578B;&#x5BF9;&#x8C61;</div><div class="line">id objc = [[self alloc] init];</div><div class="line"></div><div class="line"></div><div class="line">unsigned int count = 0;</div><div class="line"></div><div class="line">// 1.&#x83B7;&#x53D6;&#x6210;&#x5458;&#x5C5E;&#x6027;&#x6570;&#x7EC4;</div><div class="line">Ivar *ivarList = class_copyIvarList(self, &amp;count);</div><div class="line"></div><div class="line">// 2.&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x6210;&#x5458;&#x5C5E;&#x6027;&#x540D;,&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x53BB;&#x5B57;&#x5178;&#x4E2D;&#x53D6;&#x51FA;&#x5BF9;&#x5E94;&#x7684;value&#x7ED9;&#x6A21;&#x578B;&#x5C5E;&#x6027;&#x8D4B;&#x503C;</div><div class="line">for (int i = 0; i &lt; count; i++) {</div><div class="line"></div><div class="line">// 2.1 &#x83B7;&#x53D6;&#x6210;&#x5458;&#x5C5E;&#x6027;</div><div class="line">Ivar ivar = ivarList[i];</div><div class="line"></div><div class="line">// 2.2 &#x83B7;&#x53D6;&#x6210;&#x5458;&#x5C5E;&#x6027;&#x540D; C -&gt; OC &#x5B57;&#x7B26;&#x4E32;</div><div class="line">NSString *ivarName = [NSString stringWithUTF8String:ivar_getName(ivar)];</div><div class="line"></div><div class="line">// 2.3 _&#x6210;&#x5458;&#x5C5E;&#x6027;&#x540D; =&gt; &#x5B57;&#x5178;key</div><div class="line">NSString *key = [ivarName substringFromIndex:1];</div><div class="line"></div><div class="line">// 2.4 &#x53BB;&#x5B57;&#x5178;&#x4E2D;&#x53D6;&#x51FA;&#x5BF9;&#x5E94;value&#x7ED9;&#x6A21;&#x578B;&#x5C5E;&#x6027;&#x8D4B;&#x503C;</div><div class="line">id value = dict[key];</div><div class="line"></div><div class="line"></div><div class="line">// &#x83B7;&#x53D6;&#x6210;&#x5458;&#x5C5E;&#x6027;&#x7C7B;&#x578B;</div><div class="line">NSString *ivarType = [NSString stringWithUTF8String:ivar_getTypeEncoding(ivar)];</div><div class="line"></div><div class="line">// &#x4E8C;&#x7EA7;&#x8F6C;&#x6362;,&#x5B57;&#x5178;&#x4E2D;&#x8FD8;&#x6709;&#x5B57;&#x5178;,&#x4E5F;&#x9700;&#x8981;&#x628A;&#x5BF9;&#x5E94;&#x5B57;&#x5178;&#x8F6C;&#x6362;&#x6210;&#x6A21;&#x578B;</div><div class="line">//</div><div class="line">// &#x5224;&#x65AD;&#x4E0B;value,&#x662F;&#x4E0D;&#x662F;&#x5B57;&#x5178;</div><div class="line">if ([value isKindOfClass:[NSDictionary class]] &amp;&amp; ![ivarType containsString:@&quot;NS&quot;]) { //  &#x662F;&#x5B57;&#x5178;&#x5BF9;&#x8C61;,&#x5E76;&#x4E14;&#x5C5E;&#x6027;&#x540D;&#x5BF9;&#x5E94;&#x7C7B;&#x578B;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;</div><div class="line">// user User</div><div class="line"></div><div class="line">// &#x5904;&#x7406;&#x7C7B;&#x578B;&#x5B57;&#x7B26;&#x4E32; @\&quot;User\&quot; -&gt; User</div><div class="line">ivarType = [ivarType stringByReplacingOccurrencesOfString:@&quot;@&quot; withString:@&quot;&quot;];</div><div class="line">ivarType = [ivarType stringByReplacingOccurrencesOfString:@&quot;\&quot;&quot; withString:@&quot;&quot;];</div><div class="line">// &#x81EA;&#x5B9A;&#x4E49;&#x5BF9;&#x8C61;,&#x5E76;&#x4E14;&#x503C;&#x662F;&#x5B57;&#x5178;</div><div class="line">// value:user&#x5B57;&#x5178; -&gt; User&#x6A21;&#x578B;</div><div class="line">// &#x83B7;&#x53D6;&#x6A21;&#x578B;(user)&#x7C7B;&#x5BF9;&#x8C61;</div><div class="line">Class modalClass = NSClassFromString(ivarType);</div><div class="line"></div><div class="line">// &#x5B57;&#x5178;&#x8F6C;&#x6A21;&#x578B;</div><div class="line">if (modalClass) {</div><div class="line">// &#x5B57;&#x5178;&#x8F6C;&#x6A21;&#x578B; user</div><div class="line">value = [modalClass objectWithDict:value];</div><div class="line">}</div><div class="line"></div><div class="line">// &#x5B57;&#x5178;,user</div><div class="line">//            NSLog(@&quot;%@&quot;,key);</div><div class="line">}</div><div class="line"></div><div class="line">// &#x4E09;&#x7EA7;&#x8F6C;&#x6362;&#xFF1A;NSArray&#x4E2D;&#x4E5F;&#x662F;&#x5B57;&#x5178;&#xFF0C;&#x628A;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5B57;&#x5178;&#x8F6C;&#x6362;&#x6210;&#x6A21;&#x578B;.</div><div class="line">// &#x5224;&#x65AD;&#x503C;&#x662F;&#x5426;&#x662F;&#x6570;&#x7EC4;</div><div class="line">if ([value isKindOfClass:[NSArray class]]) {</div><div class="line">// &#x5224;&#x65AD;&#x5BF9;&#x5E94;&#x7C7B;&#x6709;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x5B57;&#x5178;&#x6570;&#x7EC4;&#x8F6C;&#x6A21;&#x578B;&#x6570;&#x7EC4;&#x7684;&#x534F;&#x8BAE;</div><div class="line">if ([self respondsToSelector:@selector(arrayContainModelClass)]) {</div><div class="line"></div><div class="line">// &#x8F6C;&#x6362;&#x6210;id&#x7C7B;&#x578B;&#xFF0C;&#x5C31;&#x80FD;&#x8C03;&#x7528;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;</div><div class="line">id idSelf = self;</div><div class="line"></div><div class="line">// &#x83B7;&#x53D6;&#x6570;&#x7EC4;&#x4E2D;&#x5B57;&#x5178;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x578B;</div><div class="line">NSString *type =  [idSelf arrayContainModelClass][key];</div><div class="line"></div><div class="line">// &#x751F;&#x6210;&#x6A21;&#x578B;</div><div class="line">Class classModel = NSClassFromString(type);</div><div class="line">NSMutableArray *arrM = [NSMutableArray array];</div><div class="line">// &#x904D;&#x5386;&#x5B57;&#x5178;&#x6570;&#x7EC4;&#xFF0C;&#x751F;&#x6210;&#x6A21;&#x578B;&#x6570;&#x7EC4;</div><div class="line">for (NSDictionary *dict in value) {</div><div class="line">// &#x5B57;&#x5178;&#x8F6C;&#x6A21;&#x578B;</div><div class="line">id model =  [classModel objectWithDict:dict];</div><div class="line">[arrM addObject:model];</div><div class="line">}</div><div class="line"></div><div class="line">// &#x628A;&#x6A21;&#x578B;&#x6570;&#x7EC4;&#x8D4B;&#x503C;&#x7ED9;value</div><div class="line">value = arrM;</div><div class="line"></div><div class="line">}</div><div class="line">}</div><div class="line">// 2.5 KVC&#x5B57;&#x5178;&#x8F6C;&#x6A21;&#x578B;</div><div class="line">if (value) {</div><div class="line"></div><div class="line">[objc setValue:value forKey:key];</div><div class="line">}</div><div class="line">}</div><div class="line">// &#x8FD4;&#x56DE;&#x5BF9;&#x8C61;</div><div class="line">return objc;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/23/Runtime学习笔记/" class="archive-article-date">
+  	<time datetime="2016-12-23T07:40:19.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-23</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Runtime/">Runtime</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/16/iOS开发之Xcode常用调试技巧总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS开发之Xcode常用调试技巧总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Runtime学习笔记" data-title="Runtime学习笔记" data-url="http://yoursite.com/2016/12/23/Runtime学习笔记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chilimyan"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 chilimyan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/DCloud/" style="font-size: 10px;">DCloud</a> <a href="/tags/Runtime/" style="font-size: 10px;">Runtime</a> <a href="/tags/cocoaPods/" style="font-size: 10px;">cocoaPods</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/产品设计/" style="font-size: 10px;">产品设计</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不断超越自己</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
