@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>iOS中Objective-c的对象复制和深拷贝与浅拷贝 | chilim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x5728;&amp;#x590D;&amp;#x5236;&amp;#x64CD;&amp;#x4F5C;&amp;#x4E2D;&amp;#x5982;&amp;#x679C;&amp;#x53EA;&amp;#x662F;&amp;#x5C06;&amp;#x6307;&amp;#x9488;&amp;#x590D;&amp;#x5236;&amp;#x7ED9;&amp;#x65B0;&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x800C;&amp;#x4E24;&amp;#x4E2A;&amp;#x5BF9;&amp;#x8C61;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS中Objective-c的对象复制和深拷贝与浅拷贝">
+<meta property="og:url" content="http://yoursite.com/2017/04/13/iOS中Objective-c的对象复制和深拷贝与浅拷贝/index.html">
+<meta property="og:site_name" content="chilim">
+<meta property="og:description" content="&amp;#x5728;&amp;#x590D;&amp;#x5236;&amp;#x64CD;&amp;#x4F5C;&amp;#x4E2D;&amp;#x5982;&amp;#x679C;&amp;#x53EA;&amp;#x662F;&amp;#x5C06;&amp;#x6307;&amp;#x9488;&amp;#x590D;&amp;#x5236;&amp;#x7ED9;&amp;#x65B0;&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x800C;&amp;#x4E24;&amp;#x4E2A;&amp;#x5BF9;&amp;#x8C61;">
+<meta property="og:updated_time" content="2017-04-13T14:22:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS中Objective-c的对象复制和深拷贝与浅拷贝">
+<meta name="twitter:description" content="&amp;#x5728;&amp;#x590D;&amp;#x5236;&amp;#x64CD;&amp;#x4F5C;&amp;#x4E2D;&amp;#x5982;&amp;#x679C;&amp;#x53EA;&amp;#x662F;&amp;#x5C06;&amp;#x6307;&amp;#x9488;&amp;#x590D;&amp;#x5236;&amp;#x7ED9;&amp;#x65B0;&amp;#x5BF9;&amp;#x8C61;&amp;#xFF0C;&amp;#x800C;&amp;#x4E24;&amp;#x4E2A;&amp;#x5BF9;&amp;#x8C61;">
+  
+    <link rel="alternative" href="/atom.xml" title="chilim" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">chilimyan</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/随笔">随笔</a></li>
+	        
+				<li><a href="/关于我">关于我</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/chilimyan" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">chilimyan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://i2.buimg.com/4851/6a633a5adb878e85.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">chilimyan</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+					<li><a href="/关于我">关于我</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/chilimyan" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-iOS中Objective-c的对象复制和深拷贝与浅拷贝" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS中Objective-c的对象复制和深拷贝与浅拷贝
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x5728;&#x590D;&#x5236;&#x64CD;&#x4F5C;&#x4E2D;&#x5982;&#x679C;&#x53EA;&#x662F;&#x5C06;&#x6307;&#x9488;&#x590D;&#x5236;&#x7ED9;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x6240;&#x6307;&#x5411;&#x7684;&#x503C;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x65F6;&#x79F0;&#x4E3A;&#x6D45;&#x62F7;&#x8D1D;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x4EC5;&#x5C06;&#x6307;&#x9488;&#x590D;&#x5236;&#x7ED9;&#x65B0;&#x5BF9;&#x8C61;&#x8FD8;&#x5C06;&#x5185;&#x5BB9;&#x590D;&#x5236;&#x7ED9;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x5F00;&#x8F9F;&#x4E86;&#x4E00;&#x5757;&#x65B0;&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;&#x5C31;&#x79F0;&#x4E3A;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;<br>&#x63A5;&#x4E0B;&#x6765;&#x7528;&#x4F8B;&#x5B50;&#x6765;&#x5B66;&#x4E60;&#x4E00;&#x4E0B;&#x5427;&#x3002;<a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//=====NSString======//</div><div class="line">//&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;</div><div class="line">NSString *a = @&quot;a&quot;;</div><div class="line"></div><div class="line">//&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x53EA;&#x662F;&#x5C06;&#x5185;&#x5B58;&#x6307;&#x9488;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;b1&#xFF0C;&#x5F53;a&#x7684;&#x503C;&#x6539;&#x53D8;&#x65F6;b1&#x7684;&#x503C;&#x4E5F;&#x8DDF;&#x7740;&#x53D8;</div><div class="line">NSString *b1 = a;</div><div class="line">//&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x53EA;&#x662F;&#x5C06;&#x5185;&#x5B58;&#x6307;&#x9488;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;b2&#xFF0C;&#x5F53;a&#x7684;&#x503C;&#x6539;&#x53D8;&#x65F6;b2&#x7684;&#x503C;&#x4E5F;&#x8DDF;&#x7740;&#x53D8;</div><div class="line">NSString *b2 = [NSString stringWithString:a];</div><div class="line">//&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x53EA;&#x662F;&#x5C06;&#x5185;&#x5B58;&#x6307;&#x9488;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;b3&#xFF0C;&#x5F53;a&#x7684;&#x503C;&#x6539;&#x53D8;&#x65F6;b3&#x7684;&#x503C;&#x4E5F;&#x8DDF;&#x7740;&#x53D8;</div><div class="line">NSString *b3 = [a copy];</div><div class="line">//&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4E14;&#x503C;&#x4E5F;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;b4</div><div class="line">NSString *b4 = [NSString stringWithFormat:@&quot;%@&quot;,a];</div><div class="line">//&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4E14;&#x503C;&#x4E5F;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;b5</div><div class="line">NSString *b5 = [a mutableCopy];</div><div class="line"></div><div class="line">NSLog(@&quot;a:%p\n&#x503C;&#xFF1A;%@&quot;,a,a);</div><div class="line">NSLog(@&quot;b1:%p\n&#x503C;&#xFF1A;%@&quot;,b1,b1);</div><div class="line">NSLog(@&quot;b2:%p\n&#x503C;&#xFF1A;%@&quot;,b2,b2);</div><div class="line">NSLog(@&quot;b3:%p\n&#x503C;&#xFF1A;%@&quot;,b3,b3);</div><div class="line">NSLog(@&quot;b4:%p\n&#x503C;&#xFF1A;%@&quot;,b4,b4);</div><div class="line">NSLog(@&quot;b5:%p\n&#x503C;&#xFF1A;%@&quot;,b5,b5);</div></pre></td></tr></table></figure>
+<p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">2017-04-13 10:53:46.870 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[1746:57153] b:0x608000073b80</div><div class="line">&#x503C;&#xFF1A;bb</div><div class="line">2017-04-13 10:53:46.870 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[1746:57153] c1:0x608000073b80</div><div class="line">&#x503C;&#xFF1A;bb</div><div class="line">2017-04-13 10:53:46.870 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[1746:57153] c2:0x608000073bc0</div><div class="line">&#x503C;&#xFF1A;b</div><div class="line">2017-04-13 10:53:46.871 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[1746:57153] c3:0xa000000000000621</div><div class="line">&#x503C;&#xFF1A;b</div><div class="line">2017-04-13 10:53:46.871 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[1746:57153] c4:0x608000073c00</div><div class="line">&#x503C;&#xFF1A;b</div><div class="line">2017-04-13 10:53:46.871 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[1746:57153] c5:0x6080000738c0</div><div class="line">&#x503C;&#xFF1A;b</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">//=====NSMutableString======//</div><div class="line">//&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;</div><div class="line">NSMutableString *b = [NSMutableString stringWithString:@&quot;b&quot;];</div><div class="line"></div><div class="line">//&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x53EA;&#x662F;&#x5C06;&#x5185;&#x5B58;&#x6307;&#x9488;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;c1&#xFF0C;&#x5F53;b&#x7684;&#x503C;&#x6539;&#x53D8;&#x65F6;c1&#x7684;&#x503C;&#x4E5F;&#x8DDF;&#x7740;&#x53D8;</div><div class="line">NSMutableString *c1 = b;</div><div class="line">//&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x53EA;&#x662F;&#x5C06;&#x5185;&#x5B58;&#x6307;&#x9488;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;c2&#xFF0C;&#x5F53;b&#x7684;&#x503C;&#x6539;&#x53D8;&#x65F6;c2&#x7684;&#x503C;&#x4E5F;&#x8DDF;&#x7740;&#x53D8;</div><div class="line">NSMutableString *c2 = [NSMutableString stringWithString:b];</div><div class="line">//&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4E14;&#x503C;&#x4E5F;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;c3</div><div class="line">NSMutableString *c3 = [b copy];</div><div class="line">//&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4E14;&#x503C;&#x4E5F;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;c4</div><div class="line">NSMutableString *c4 = [NSMutableString stringWithFormat:@&quot;%@&quot;,b];</div><div class="line">//&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4E14;&#x503C;&#x4E5F;&#x62F7;&#x8D1D;&#x7ED9;&#x4E86;c5</div><div class="line">NSMutableString *c5 = [b mutableCopy];</div><div class="line"></div><div class="line">[b appendString:@&quot;b&quot;];</div><div class="line"></div><div class="line">NSLog(@&quot;b:%p\n&#x503C;&#xFF1A;%@&quot;,b,b);</div><div class="line">NSLog(@&quot;c1:%p\n&#x503C;&#xFF1A;%@&quot;,c1,c1);</div><div class="line">NSLog(@&quot;c2:%p\n&#x503C;&#xFF1A;%@&quot;,c2,c2);</div><div class="line">NSLog(@&quot;c3:%p\n&#x503C;&#xFF1A;%@&quot;,c3,c3);</div><div class="line">NSLog(@&quot;c4:%p\n&#x503C;&#xFF1A;%@&quot;,c4,c4);</div><div class="line">NSLog(@&quot;c5:%p\n&#x503C;&#xFF1A;%@&quot;,c5,c5);</div></pre></td></tr></table></figure>
+<p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">2017-04-13 11:20:41.223 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2012:68728] b:0x600000075800</div><div class="line">&#x503C;&#xFF1A;bb</div><div class="line">2017-04-13 11:20:41.223 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2012:68728] c1:0x600000075800</div><div class="line">&#x503C;&#xFF1A;bb</div><div class="line">2017-04-13 11:20:41.224 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2012:68728] c2:0x600000075840</div><div class="line">&#x503C;&#xFF1A;b</div><div class="line">2017-04-13 11:20:41.224 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2012:68728] c3:0xa000000000000621</div><div class="line">&#x503C;&#xFF1A;b</div><div class="line">2017-04-13 11:20:41.224 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2012:68728] c4:0x600000075700</div><div class="line">&#x503C;&#xFF1A;b</div><div class="line">2017-04-13 11:20:41.225 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2012:68728] c5:0x600000075980</div><div class="line">&#x503C;&#xFF1A;b</div></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E0B;<code>NSArray</code>&#x548C;<code>NSMutableArray</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//=====NSArray======//</div><div class="line">NSArray *arr = [NSArray arrayWithObject:@&quot;array&quot;];</div><div class="line"></div><div class="line">NSArray *arr1 = arr;</div><div class="line">NSArray *arr2 = [arr copy];</div><div class="line">NSArray *arr3 = [NSArray arrayWithArray:arr];</div><div class="line">NSArray *arr4 = [arr mutableCopy];</div><div class="line"></div><div class="line">NSLog(@&quot;arr:%p\n&#x503C;&#xFF1A;%@&quot;,arr,arr);</div><div class="line">NSLog(@&quot;arr1:%p\n&#x503C;&#xFF1A;%@&quot;,arr1,arr1);</div><div class="line">NSLog(@&quot;arr2:%p\n&#x503C;&#xFF1A;%@&quot;,arr2,arr2);</div><div class="line">NSLog(@&quot;arr3:%p\n&#x503C;&#xFF1A;%@&quot;,arr3,arr3);</div><div class="line">NSLog(@&quot;arr4:%p\n&#x503C;&#xFF1A;%@&quot;,arr4,arr4);</div></pre></td></tr></table></figure>
+<p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">2017-04-13 11:24:19.599 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2061:70740] arr:0x60000000fcb0</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div><div class="line">2017-04-13 11:24:19.599 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2061:70740] arr1:0x60000000fcb0</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div><div class="line">2017-04-13 11:24:19.600 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2061:70740] arr2:0x60000000fcb0</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div><div class="line">2017-04-13 11:24:19.600 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2061:70740] arr3:0x60000000fcc0</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div><div class="line">2017-04-13 11:24:19.601 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2061:70740] arr4:0x600000058f30</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//=====NSMutableArray======//</div><div class="line">NSMutableArray *arr = [NSMutableArray arrayWithObject:@&quot;array&quot;];</div><div class="line"></div><div class="line">NSMutableArray *arr1 = arr;</div><div class="line">NSMutableArray *arr2 = [arr copy];</div><div class="line">NSMutableArray *arr3 = [NSMutableArray arrayWithArray:arr];</div><div class="line">NSMutableArray *arr4 = [arr mutableCopy];</div><div class="line"></div><div class="line">[arr addObject:@&quot;array1&quot;];</div><div class="line"></div><div class="line">NSLog(@&quot;arr:%p\n&#x503C;&#xFF1A;%@&quot;,arr,arr);</div><div class="line">NSLog(@&quot;arr1:%p\n&#x503C;&#xFF1A;%@&quot;,arr1,arr1);</div><div class="line">NSLog(@&quot;arr2:%p\n&#x503C;&#xFF1A;%@&quot;,arr2,arr2);</div><div class="line">NSLog(@&quot;arr3:%p\n&#x503C;&#xFF1A;%@&quot;,arr3,arr3);</div><div class="line">NSLog(@&quot;arr4:%p\n&#x503C;&#xFF1A;%@&quot;,arr4,arr4);</div></pre></td></tr></table></figure>
+<p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">2017-04-13 11:25:13.651 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2088:71557] arr:0x6000000513a0</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array,</div><div class="line">array1</div><div class="line">)</div><div class="line">2017-04-13 11:25:13.652 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2088:71557] arr1:0x6000000513a0</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array,</div><div class="line">array1</div><div class="line">)</div><div class="line">2017-04-13 11:25:13.653 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2088:71557] arr2:0x600000009600</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div><div class="line">2017-04-13 11:25:13.654 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2088:71557] arr3:0x600000054d30</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div><div class="line">2017-04-13 11:25:13.656 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[2088:71557] arr4:0x600000055180</div><div class="line">&#x503C;&#xFF1A;(</div><div class="line">array</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>&#x770B;&#x5B8C;&#x4E0A;&#x9762;&#x8FD9;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x5728;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x6BD4;&#x5982;<code>NSString</code></p>
+<ol>
+<li>&#x76F4;&#x63A5;&#x8D4B;&#x503C;&#x3002;</li>
+<li><code>stringWithString</code>&#x65B9;&#x6CD5;&#x8D4B;&#x503C;&#x3002;</li>
+<li><code>copy</code>&#x65B9;&#x6CD5;&#x8D4B;&#x503C;&#x3002;<br>&#x8FD9;&#x4E9B;&#x90FD;&#x662F;&#x5C5E;&#x4E8E;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x53EA;&#x662F;&#x5C06;&#x6307;&#x9488;&#x590D;&#x5236;&#x8FC7;&#x53BB;&#xFF0C;&#x8BA9;&#x5B83;&#x4EEC;&#x6307;&#x5411;&#x540C;&#x4E00;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#xFF0C;&#x5F53;&#x539F;&#x59CB;&#x5BF9;&#x8C61;&#x7684;&#x503C;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x5B83;&#x4EEC;&#x590D;&#x5236;&#x8FC7;&#x53BB;&#x7684;&#x5BF9;&#x8C61;&#x6240;&#x6307;&#x5411;&#x7684;&#x503C;&#x4E5F;&#x4F1A;&#x6539;&#x53D8;&#x3002;&#x4E0E;&#x6B64;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;</li>
+<li><code>mutableCopy</code>&#x65B9;&#x6CD5;&#x8D4B;&#x503C;&#x3002;</li>
+<li><code>stringWithFormat</code>&#x65B9;&#x6CD5;&#x8D4B;&#x503C;&#x3002;<br>&#x8FD9;&#x4E9B;&#x662F;&#x5C5E;&#x4E8E;&#x6DF1;&#x62F7;&#x8D1D;&#x867D;&#x7136;&#x5B83;&#x4EEC;&#x7684;&#x503C;&#x548C;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x62F7;&#x8D1D;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x4EEC;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x8FD9;&#x662F;&#x4E24;&#x4E2A;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x3002;<br>&#x4F46;&#x662F;&#x5728;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x6BD4;&#x5982;<code>NSMutableString</code><br>&#x5176;&#x4ED6;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>copy</code>&#x65B9;&#x6CD5;&#x4E5F;&#x53D8;&#x6210;&#x4E86;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;&#x518D;&#x770B;<code>NSArray</code>&#x548C;<code>NSMutableArray</code>&#x4E5F;&#x90FD;&#x4E00;&#x6837;&#xFF0C;&#x636E;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63A8;&#x6D4B;&#x4EE5;&#x4E0B;&#x7ED3;&#x8BBA;&#xFF1A;<blockquote>
+<p>&#x5728;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x4E2D;&#x5373;NSxxx<code>copy</code>&#x65B9;&#x6CD5;&#x662F;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;<code>mutableCopy</code>&#x65B9;&#x6CD5;&#x662F;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;&#x5728;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x4E2D;&#x5373;NSMutablexxx<code>copy</code>&#x65B9;&#x6CD5;&#x548C;<code>mutableCopy</code>&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;<br>&#x63A5;&#x4E0B;&#x6765;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x7EC6;&#x8282;&#xFF0C;&#x4EE5;<code>NSMutableArray</code>&#x4E3A;&#x4F8B;&#xFF1A;</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *arr = [NSMutableArray arrayWithObject:@&quot;array&quot;];</div><div class="line"></div><div class="line">NSMutableArray *arr1 = [arr copy];</div><div class="line">NSMutableArray *arr2 = [arr mutableCopy];</div><div class="line"></div><div class="line">[arr1 addObject:@&quot;array&quot;];</div><div class="line">[arr2 addObject:@&quot;array&quot;];</div><div class="line">NSLog(@&quot;arr1:%@\narr2:%@\n&quot;,arr1,arr2);</div></pre></td></tr></table></figure>
+<p>&#x5F53;&#x8FD0;&#x884C;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4F1A;&#x53D1;&#x73B0;<code>[arr1 addObject:@&quot;array&quot;];</code>&#x5230;&#x8FD9;&#x91CC;&#x5C31;&#x95EA;&#x9000;&#x4E86;&#x3002;&#x7531;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63A8;&#x6D4B;&#x4EE5;&#x4E0B;&#x7ED3;&#x8BBA;&#xFF1A;</p>
+<blockquote>
+<p>&#x4E0D;&#x7BA1;&#x5728;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x4E2D;copy&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x3002;<br>&#x6211;&#x4EEC;&#x518D;&#x6765;&#x628A;<code>NSArray</code>&#x548C;<code>NSMutableArray</code>&#x6570;&#x7EC4;&#x91CC;&#x9762;&#x7684;&#x503C;&#x548C;&#x5185;&#x5B58;&#x5730;&#x5740;&#x6253;&#x5370;&#x770B;&#x4E00;&#x4E0B;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NSLog(@&quot;arr:%p\n&#x503C;&#xFF1A;%@&quot;,arr[0],arr[0]);</div><div class="line">NSLog(@&quot;arr1:%p\n&#x503C;&#xFF1A;%@&quot;,arr1[0],arr1[0]);</div><div class="line">NSLog(@&quot;arr2:%p\n&#x503C;&#xFF1A;%@&quot;,arr2[0],arr2[0]);</div><div class="line">NSLog(@&quot;arr3:%p\n&#x503C;&#xFF1A;%@&quot;,arr3[0],arr3[0]);</div><div class="line">NSLog(@&quot;arr4:%p\n&#x503C;&#xFF1A;%@&quot;,arr4[0],arr4[0]);</div></pre></td></tr></table></figure>
+<p>&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">2017-04-13 15:08:56.938 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[4847:125447] arr:0x1043b0068</div><div class="line">&#x503C;&#xFF1A;array</div><div class="line">2017-04-13 15:08:56.938 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[4847:125447] arr1:0x1043b0068</div><div class="line">&#x503C;&#xFF1A;array</div><div class="line">2017-04-13 15:08:56.939 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[4847:125447] arr2:0x1043b0068</div><div class="line">&#x503C;&#xFF1A;array</div><div class="line">2017-04-13 15:08:56.939 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[4847:125447] arr3:0x1043b0068</div><div class="line">&#x503C;&#xFF1A;array</div><div class="line">2017-04-13 15:08:56.939 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[4847:125447] arr4:0x1043b0068</div><div class="line">&#x503C;&#xFF1A;array</div></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E0D;&#x7BA1;&#x662F;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x6DF1;&#x62F7;&#x8D1D;&#x8FD8;&#x662F;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x5B83;&#x91CC;&#x9762;&#x7684;&#x503C;&#x548C;&#x5C5E;&#x6027;&#x90FD;&#x662F;&#x53EA;&#x662F;&#x6D45;&#x62F7;&#x8D1D;&#x3002;<br>&#x7EE7;&#x7EED;&#x7814;&#x7A76;NSObject&#x7684;&#x62F7;&#x8D1D;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Person *p = [[Person alloc]init];</div><div class="line">p.age = @&quot;18&quot;;</div><div class="line">p.name = @&quot;chilim&quot;;</div><div class="line"></div><div class="line">Person *p1 = p;</div><div class="line">Person *p2 = [p copy];</div><div class="line"></div><div class="line">NSLog(@&quot;%@&quot;,p);</div><div class="line">NSLog(@&quot;%@&quot;,p1);</div><div class="line">NSLog(@&quot;%@&quot;,p2);</div></pre></td></tr></table></figure>
+<p>&#x8FD0;&#x884C;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x540E;&#x53D1;&#x73B0;<code>Person *p2 = [p copy];</code>&#x8FD9;&#x91CC;&#x95EA;&#x9000;&#x4E86;&#x3002;<br><figure class="highlight plain"><figcaption><span>&apos;-[Person copyWithZone:]: unrecognized selector sent to instance 0x60800003ee40&apos;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">&#x539F;&#x6765;&#x5BF9;&#x8C61;&#x53EA;&#x6709;&#x7EE7;&#x627F;`NSCopying&#x3001;NSMutableCopying`&#xFF0C;&#x5B9E;&#x73B0;&#x8BE5;&#x534F;&#x8BAE;&#x7684;`copyWithZone`&#x65B9;&#x6CD5;&#x548C;`mutableCopyWithZone`&#x65B9;&#x6CD5;&#x624D;&#x80FD;&#x8FDB;&#x884C;`copy`&#x548C;`mutableCopy`&#x64CD;&#x4F5C;&#x3002;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x540E;&#xFF1A;</div></pre></td></tr></table></figure></p>
+<p>@interface Person : NSObject<nscopying></nscopying></p>
+<p>@property (nonatomic, copy)NSString <em>age;<br>@property (nonatomic, copy)NSString </em>name;</p>
+<p>@end<br>@implementation Person</p>
+<ul>
+<li>(id)copyWithZone:(NSZone *)zone{<br>return @&#x201D;abc&#x201D;;<br>}</li>
+</ul>
+<p>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#x518D;&#x8FD0;&#x884C;&#x4E00;&#x4E0B;&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</div></pre></td></tr></table></figure></p>
+<p>2017-04-13 15:30:21.984 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[5123:136279] <person: 0x60000002e8a0=""><br>2017-04-13 15:30:21.984 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[5123:136279] <person: 0x60000002e8a0=""><br>2017-04-13 15:30:21.984 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[5123:136279] abc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#x8FD9;&#x8BF4;&#x660E;copy&#x65B9;&#x6CD5;&#x5BF9;&#x5E94;&#x7684;&#x5B9E;&#x73B0;&#x662F;copyWithZone&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x62F7;&#x8D1D;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5C31;&#x5E94;&#x8BE5;&#x662F;&#x5728;copyWithZone&#x65B9;&#x6CD5;&#x91CC;&#x5B9E;&#x73B0;&#x62F7;&#x8D1D;&#x3002;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x3002;</div></pre></td></tr></table></figure></person:></person:></p>
+<ul>
+<li>(id)copyWithZone:(NSZone <em>)zone{<br>Person </em>p = [[Person allocWithZone:zone] init];<br>return p;<br>//&#x6CE8;&#x610F;&#x8FD9;&#x6837;&#x5199;&#x8BD7;&#x4E0D;&#x5BF9;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x65B9;&#x6CD5;&#x5DF2;&#x7ECF;&#x7533;&#x8BF7;&#x4E86;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x6B21;alloc&#x7533;&#x8BF7;&#x4E86;<br>//    Person *p = [[Person alloc] init];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#x8FD0;&#x884C;&#x540E;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</div><div class="line">2017-04-13 15:46:27.725 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>[12371:157485] <person: 0x600000221a20=""><br>2017-04-13 15:46:27.725 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[12371:157485] <person: 0x600000221a20=""><br>2017-04-13 15:46:27.725 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[12371:157485] <person: 0x600000221960=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#x6211;&#x4EEC;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x7EC6;&#x8282;&#xFF1A;</div></pre></td></tr></table></figure></person:></person:></person:></p>
+<p>NSLog(@&#x201D;&#x503C;&#xFF1A;%@\n%p&#x201D;,p2.age,p2.age);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#x6253;&#x5370;&#x51FA;&#x6765;&#x770B;&#x5230;`2017-04-13 15:51:21.826 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[12450:160296] &#x503C;&#xFF1A;(null)</div><div class="line">0x0`&#x5BF9;&#x8C61;&#x662F;&#x62F7;&#x8D1D;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5C5E;&#x6027;&#x5374;&#x662F;&#x7A7A;&#x7684;&#x3002;</div><div class="line">&#x6211;&#x4EEC;&#x5728;`copyWithZone`&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x52A0;&#x4E00;&#x884C;&#x8FD9;&#x6837;&#x7684;&#x4EE3;&#x7801;`p.age = self.age;`&#x518D;&#x6253;&#x5370;`2017-04-13 15:53:59.569 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[12487:161754] &#x503C;&#xFF1A;18</div><div class="line">0x1026ef078`</div><div class="line">&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5C5E;&#x6027;&#x51FA;&#x6765;&#x4E86;&#x3002;&#x8BF4;&#x660E;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x62F7;&#x8D1D;&#x7684;&#x65F6;&#x5019;&#x5728;`copyWithZone`&#x65B9;&#x6CD5;&#x63A7;&#x5236;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x3002;</div><div class="line">&#x4EE5;&#x4E0A;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x4E86;&#x8D4B;&#x503C;&#x548C;&#x6DF1;&#x62F7;&#x8D1D;&#xFF0C;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x6700;&#x540E;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x7814;&#x7A76;&#x4E00;&#x4E0B;`@property`&#x4E2D;&#x7684;`copy`&#x548C;`strong`&#x3002;</div><div class="line">&#x770B;&#x4E0B;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;</div></pre></td></tr></table></figure></p>
+<p>Person *p = [[Person alloc]init];</p>
+<p>NSMutableString *string = [NSMutableString stringWithString:@&#x201D;hello&#x201D;];</p>
+<p>p.name = string;</p>
+<p>[string appendString:@&#x201D;world&#x201D;];</p>
+<p>NSLog(@&#x201D;name:%@\nstring:%@&#x201D;,p.name, string);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#x8FD0;&#x884C;&#x540E;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF1A;`2017-04-13 16:02:33.706 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[12574:165530] name:hello</div><div class="line">string:helloworld</div><div class="line">``person.name`&#x7684;&#x503C;&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x3002;&#x56E0;&#x4E3A;&#x5B9E;&#x9645;&#x4E0A;&#x5F53;&#x4F60;&#x7ED9;`name`&#x8D4B;&#x503C;&#x7684;&#x65F6;&#x5019;`@property (nonatomic, copy)NSString *name;`&#x662F;&#x5BF9;name&#x505A;&#x4E86;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>(void)setName:(NSString *)name<br>{<br>_name = [name copy];<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#x6240;&#x4EE5;&#x5373;&#x4F7F;&#x5199;&#x6210;&#x8FD9;&#x6837;`@property (nonatomic, copy) NSMutableString *name;`</div><div class="line">&#x867D;&#x7136;name&#x662F;&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#xFF0C;&#x4F46;&#x8FD8;&#x662F;&#x4E0D;&#x4F1A;&#x53D8;&#x7684;&#x3002;</div><div class="line">&#x5982;&#x679C;&#x6362;&#x6210;`@property (nonatomic, strong)NSString *name;`</div><div class="line">&#x518D;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x770B;&#x770B;&#xFF1A;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Person *p = [[Person alloc]init];</p>
+<p>NSMutableString *string = [NSMutableString stringWithString:@&#x201D;hello&#x201D;];</p>
+<p>p.name = string;</p>
+<p>[string appendString:@&#x201D;world&#x201D;];</p>
+<p>NSLog(@&#x201D;name:%@\nstring:%@&#x201D;,p.name, string);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#x6253;&#x5370;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</div></pre></td></tr></table></figure></p>
+<p>2017-04-13 16:15:32.225 &#x6DF1;&#x590D;&#x5236;&#x6D45;&#x590D;&#x5236;[12768:173053] name:helloworld<br>string:helloworld<br>```<br>&#x8FD9;&#x5C31;&#x53EF;&#x4EE5;&#x6539;&#x53D8;name&#x7684;&#x5C5E;&#x6027;&#x3002;&#x56E0;&#x4E3A;strong&#x5E76;&#x6CA1;&#x6709;&#x6267;&#x884C;copy&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x8FD9;&#x91CC;&#x7684;strong&#x76F8;&#x5F53;&#x4E8E;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;copy&#x76F8;&#x5F53;&#x4E8E;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/04/13/iOS中Objective-c的对象复制和深拷贝与浅拷贝/" class="archive-article-date">
+  	<time datetime="2017-04-13T14:19:26.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-04-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/10/网络安全之AES与RSA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">网络安全之AES与RSA</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iOS中Objective-c的对象复制和深拷贝与浅拷贝" data-title="iOS中Objective-c的对象复制和深拷贝与浅拷贝" data-url="http://yoursite.com/2017/04/13/iOS中Objective-c的对象复制和深拷贝与浅拷贝/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"chilimyan"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 chilimyan
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/DCloud/" style="font-size: 10px;">DCloud</a> <a href="/tags/React-Native/" style="font-size: 13.33px;">React Native</a> <a href="/tags/Runtime/" style="font-size: 10px;">Runtime</a> <a href="/tags/cocoaPods/" style="font-size: 10px;">cocoaPods</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/xcode/" style="font-size: 10px;">xcode</a> <a href="/tags/产品设计/" style="font-size: 13.33px;">产品设计</a> <a href="/tags/网络安全/" style="font-size: 10px;">网络安全</a> <a href="/tags/读书笔记/" style="font-size: 13.33px;">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://android-faner.github.io/">范总</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不断超越自己</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
