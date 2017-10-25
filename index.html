@@ -149,6 +149,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS程序结构：Appdelegate-UIApplication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/">iOS程序结构：Appdelegate&amp;UIApplication</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/" class="archive-article-date">
+  	<time datetime="2017-10-25T13:46:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iOS&#x5E94;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x5165;&#x53E3;&#x5927;&#x5BB6;&#x90FD;&#x77E5;&#x9053;&#xFF0C;&#x5C31;&#x662F;&#x90A3;&#x4E2A;&#x9879;&#x76EE;&#x5DE5;&#x7A0B;&#x91CC;&#x9762;&#x7684;main.m&#x4E2D;&#x7684;main()&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5728;xcode4.2&#x4E4B;&#x524D;main()&#x51FD;&#x6570;&#x662F;&#x8FD9;&#x6837;&#x7684;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int main(int argc, char *argv[])</div><div class="line">{</div><div class="line">NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];</div><div class="line">int retVal = UIApplicationMain(argc, argv, nil, nil);</div><div class="line">[pool release];</div><div class="line">return retVal;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x800C;&#x6709;&#x4E86;ARC&#x4E4B;&#x540E;&#xFF0C;&#x5728;xcode4.2&#x4E4B;&#x540E;&#x53D8;&#x6210;&#x4E86;&#x8FD9;&#x6837;</p>
+        
+          <a class="article-more-a" href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-阿里三面（转）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -685,82 +764,6 @@
 
 
   
-    <article id="post-iOS中Objective-c的对象复制和深拷贝与浅拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/iOS中Objective-c的对象复制和深拷贝与浅拷贝/">iOS中Objective-c的对象复制和深拷贝与浅拷贝</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/13/iOS中Objective-c的对象复制和深拷贝与浅拷贝/" class="archive-article-date">
-  	<time datetime="2017-04-13T14:19:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x5728;&#x590D;&#x5236;&#x64CD;&#x4F5C;&#x4E2D;&#x5982;&#x679C;&#x53EA;&#x662F;&#x5C06;&#x6307;&#x9488;&#x590D;&#x5236;&#x7ED9;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x6240;&#x6307;&#x5411;&#x7684;&#x503C;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x65F6;&#x79F0;&#x4E3A;&#x6D45;&#x62F7;&#x8D1D;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x4EC5;&#x5C06;&#x6307;&#x9488;&#x590D;&#x5236;&#x7ED9;&#x65B0;&#x5BF9;&#x8C61;&#x8FD8;&#x5C06;&#x5185;&#x5BB9;&#x590D;&#x5236;&#x7ED9;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x5F00;&#x8F9F;&#x4E86;&#x4E00;&#x5757;&#x65B0;&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;&#x5C31;&#x79F0;&#x4E3A;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;<br>&#x63A5;&#x4E0B;&#x6765;&#x7528;&#x4F8B;&#x5B50;&#x6765;&#x5B66;&#x4E60;&#x4E00;&#x4E0B;&#x5427;&#x3002;</p>
-        
-          <a class="article-more-a" href="/2017/04/13/iOS中Objective-c的对象复制和深拷贝与浅拷贝/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/iOS中Objective-c的对象复制和深拷贝与浅拷贝/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -878,11 +881,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cocoaPods</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">cocoaPods</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -891,6 +894,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">xcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-iOS</a>
               </li>
              
               <li class="article-tag-list-item">
