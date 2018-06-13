@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: React Native | chilim</title>
+  <title>NSTimer定时器使用问题 | chilim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="chilim">
-<meta property="og:url" content="http://yoursite.com/tags/React-Native/index.html">
+  <meta name="description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x7528;&amp;#x5230;&amp;#x4E00;&amp;#x6B21;&amp;#x5B9A;&amp;#x65F6;&amp;#x5668;&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x53D1;&amp;#x73B0;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;NStimer&amp;#x5B9A;&amp;#x65F6;&amp;#x5668;&amp;#x5185;&amp;#x5B58;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSTimer定时器使用问题">
+<meta property="og:url" content="http://yoursite.com/2018/06/13/NSTimer定时器使用问题/index.html">
 <meta property="og:site_name" content="chilim">
+<meta property="og:description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x7528;&amp;#x5230;&amp;#x4E00;&amp;#x6B21;&amp;#x5B9A;&amp;#x65F6;&amp;#x5668;&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x53D1;&amp;#x73B0;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;NStimer&amp;#x5B9A;&amp;#x65F6;&amp;#x5668;&amp;#x5185;&amp;#x5B58;&amp;">
+<meta property="og:updated_time" content="2018-06-13T14:09:12.428Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chilim">
+<meta name="twitter:title" content="NSTimer定时器使用问题">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#x7528;&amp;#x5230;&amp;#x4E00;&amp;#x6B21;&amp;#x5B9A;&amp;#x65F6;&amp;#x5668;&amp;#x529F;&amp;#x80FD;&amp;#xFF0C;&amp;#x53D1;&amp;#x73B0;&amp;#x7684;&amp;#x4E00;&amp;#x4E2A;NStimer&amp;#x5B9A;&amp;#x65F6;&amp;#x5668;&amp;#x5185;&amp;#x5B58;&amp;">
   
     <link rel="alternative" href="/atom.xml" title="chilim" type="application/atom+xml">
   
@@ -147,36 +151,82 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-NSTimer定时器使用问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/23/React-Native组件生命周期/" class="archive-article-date">
-  	<time datetime="2017-03-23T14:10:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/23/React-Native组件生命周期/">React Native组件生命周期</a>
+    <h1 class="article-title" itemprop="name">
+      NSTimer定时器使用问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/13/NSTimer定时器使用问题/" class="archive-article-date">
+  	<time datetime="2018-06-13T14:07:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x524D;&#x6BB5;&#x65F6;&#x95F4;&#x7528;&#x5230;&#x4E00;&#x6B21;&#x5B9A;&#x65F6;&#x5668;&#x529F;&#x80FD;&#xFF0C;&#x53D1;&#x73B0;&#x7684;&#x4E00;&#x4E2A;<code>NStimer</code>&#x5B9A;&#x65F6;&#x5668;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E8E;&#x662F;&#x5728;&#x6574;&#x4E2A;&#x9879;&#x76EE;&#x4E2D;&#x67E5;&#x627E;&#x7528;&#x5230;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x3002;<br>&#x5B9A;&#x65F6;&#x5668;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#x7684;&#x662F;&#x4E0B;&#x9762;2&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+ (NSTimer *)timerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(nullable id)userInfo repeats:(BOOL)yesOrNo;</div><div class="line">+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(nullable id)userInfo repeats:(BOOL)yesOrNo;</div></pre></td></tr></table></figure>
+<p><code>Runloop</code>&#x662F;&#x4FDD;&#x6301;&#x7A0B;&#x5E8F;&#x7684;&#x6301;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;&#x5904;&#x7406;&#x5404;&#x7C7B;&#x4E8B;&#x4EF6;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x5176;&#x4E2D;&#x5C31;&#x5305;&#x62EC;<code>NSTimer</code>&#x3002;<a id="more"></a></p>
+<p>&#x5176;&#x4E2D;<code>scheduledTimerWithTimeInterval</code>&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x662F;&#x81EA;&#x52A8;&#x52A0;&#x5165;<code>Runloop</code>&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x9ED8;&#x8BA4;&#x662F;<code>DefaultMode</code>&#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x800C;<code>timerWithTimeInterval</code>&#x5219;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x52A0;&#x5165;<code>Runloop</code>&#x624D;&#x80FD;&#x89E6;&#x53D1;&#x3002;&#x4E00;&#x822C;&#x4F1A;&#x8BBE;&#x7F6E;&#x4E3A;<code>CommonModel</code>&#x6A21;&#x5F0F;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x4F1A;&#x53D7;UI&#x7684;&#x5F71;&#x54CD;&#x800C;&#x4FDD;&#x6301;&#x5B9A;&#x65F6;&#x5668;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>&#x6211;&#x4E00;&#x76F4;&#x90FD;&#x662F;&#x7528;&#x540E;&#x8005;&#xFF0C;&#x5E76;&#x4E14;&#x4E00;&#x76F4;&#x4EE5;&#x4E3A;&#x5728;<code>delloc</code>&#x4E2D;&#x50CF;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x91CA;&#x653E;&#x5C31;OK&#x4E86;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)dealloc{</div><div class="line">    if (_timer) {</div><div class="line">        [_timer invalidate];</div><div class="line">        _timer = nil;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x4F46;&#x662F;&#x53D1;&#x73B0;&#x8FD9;&#x5E76;&#x4E0D;&#x80FD;&#x91CA;&#x653E;&#x3002;&#x5B9A;&#x65F6;&#x5668;&#x4F9D;&#x65E7;&#x4F1A;&#x7167;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E14;&#x4E0D;&#x4F1A;&#x8FD0;&#x884C;<code>dealloc</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x539F;&#x56E0;&#x5C31;&#x662F;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">_timer = [NSTimer timerWithTimeInterval:_timeInterval target:self selector:@selector(addone) userInfo:nil repeats:YES];</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;<code>target</code>&#x4F20;&#x5165;&#x7684;<code>self</code>&#x4F1A;&#x88AB;<code>timer</code>&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x800C;<code>timer</code>&#x53C8;&#x88AB;<code>self</code>&#x5F3A;&#x5F15;&#x7528;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x5F15;&#x7528;&#x5FAA;&#x73AF;&#x4E86;&#x3002;<br>&#x90A3;&#x8FD9;&#x6837;&#x884C;&#x4E0D;&#x884C;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:_timeInterval target:self selector:@selector(addone) userInfo:nil repeats:YES];</div><div class="line">[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</div></pre></td></tr></table></figure>
+<p>&#x6216;&#x8005;&#x7ED9;<code>timer</code>&#x4E00;&#x4E2A;<code>weak</code>&#x5F31;&#x5F15;&#x7528;&#xFF0C;&#x6216;&#x8005;&#x4F20;&#x5165;<code>target</code>&#x4E00;&#x4E2A;&#x5F31;&#x5F15;&#x7528;&#x7684;<code>self</code>&#x3002;<br>&#x4EE5;&#x4E0A;&#x7ECF;&#x5B9E;&#x9A8C;&#x90FD;&#x4E0D;&#x884C;&#xFF0C;&#x5176;&#x5B9E;<code>timer</code>&#x5DF2;&#x7ECF;&#x52A0;&#x5165;&#x5230;<code>Runloop</code>&#x91CC;&#x9762;&#x4E86;&#xFF0C;timer&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4ECE;<code>Runloop</code>&#x91CC;&#x9762;&#x79FB;&#x9664;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5C06;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x3002;&#x552F;&#x4E00;&#x80FD;&#x5C06;<code>timer</code>&#x79FB;&#x9664;<code>Runloop</code>&#x7684;&#x5C31;&#x53EA;&#x6709;<code>[timer invalidate];</code>&#x65B9;&#x6CD5;&#x3002;&#x6240;&#x4EE5;&#x5F53;&#x4F60;&#x4E0D;&#x7528;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x65F6;&#x5019;&#x5FC5;&#x987B;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x91CA;&#x653E;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (_timer) {</div><div class="line">        [_timer invalidate];</div><div class="line">        _timer = nil;</div><div class="line">    }</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x53C2;&#x8003;&#x4E86;&#x8FD9;&#x4E2A;&#x505A;&#x6CD5;<a href="https://blog.callmewhy.com/2015/07/06/weak-timer-in-ios/" target="_blank" rel="external">iOS &#x4E2D;&#x7684; NSTimer</a>&#x4E0D;&#x7528;target&#x4F20;self&#xFF0C;&#x800C;&#x662F;&#x4F20;&#x4E00;&#x4E2A;Bolck&#x6765;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x3002;<br>&#x53EF;&#x4EE5;&#x5199;&#x4E2A;&#x5206;&#x7C7B;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">@interface NSTimer (CLTimerTool)</div><div class="line"></div><div class="line">///&#x81EA;&#x52A8;&#x52A0;&#x5165;Runloop&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;defaultModel</div><div class="line">+ (NSTimer *)cl_scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats;</div><div class="line">///&#x624B;&#x52A8;&#x52A0;&#x5165;Runloop&#xFF0C;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;Runloopmodel&#xFF0C;&#x4E00;&#x822C;&#x662F;CommonModel&#xFF0C;&#x8FD9;&#x6837;&#x4E0D;&#x4F1A;&#x53D7;UI&#x7684;&#x5F71;&#x54CD;</div><div class="line">+ (NSTimer *)cl_timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats;</div><div class="line"></div><div class="line">@end</div><div class="line">@implementation NSTimer (CLTimerTool)</div><div class="line"></div><div class="line">+ (NSTimer *)cl_scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats</div><div class="line">{</div><div class="line">    void (^block)() = [inBlock copy];</div><div class="line">    NSTimer * timer = [self scheduledTimerWithTimeInterval:inTimeInterval target:self selector:@selector(__executeTimerBlock:) userInfo:block repeats:inRepeats];</div><div class="line">    return timer;</div><div class="line">}</div><div class="line"></div><div class="line">+ (NSTimer *)cl_timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats</div><div class="line">{</div><div class="line">    void (^block)() = [inBlock copy];</div><div class="line">    NSTimer * timer = [self timerWithTimeInterval:inTimeInterval target:self selector:@selector(__executeTimerBlock:) userInfo:block repeats:inRepeats];</div><div class="line">    return timer;</div><div class="line">}</div><div class="line"></div><div class="line">+ (void)__executeTimerBlock:(NSTimer *)inTimer;</div><div class="line">{</div><div class="line">    if([inTimer userInfo])</div><div class="line">    {</div><div class="line">        void (^block)() = (void (^)())[inTimer userInfo];</div><div class="line">        block();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6700;&#x540E;&#x4E86;&#x89E3;&#x4E0B;<code>NSTimer</code>&#x7684;&#x6682;&#x505C;&#x548C;&#x5F00;&#x59CB;<br>&#x5F00;&#x59CB;&#x5B9A;&#x65F6;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x5C06;<code>fireDate</code>&#x8BBE;&#x7F6E;&#x5728;&#x8FC7;&#x53BB;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#xFF1A;<br> <code>[self.timer setFireDate:[NSDate distantPast]];</code><br> &#x6682;&#x505C;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x628A;fireDate&#x8BBE;&#x7F6E;&#x5728;&#x672A;&#x6765;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#xFF1A;<br> <code>[self.timer setFireDate:[NSDate distantFuture]];</code></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ots5xplq8.bkt.clouddn.com/9635D59B-F9AD-4051-8337-1D45119D6199.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ots5xplq8.bkt.clouddn.com/7F811E0D-1F60-4C91-BBDB-36D4FD04FB25.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -184,69 +234,119 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React Native</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/06/13/NSTimer定时器使用问题/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/18/React-Native初探/" class="archive-article-date">
-  	<time datetime="2017-03-18T03:53:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/20/添加CocoaPods支持/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">添加CocoaPods支持</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/18/React-Native初探/">React Native初探</a>
-    </h1>
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2018/06/13/NSTimer定时器使用问题/", 
+    sourceId: "NSTimer定时器使用问题",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React Native</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -269,9 +369,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
