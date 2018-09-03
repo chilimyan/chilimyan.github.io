@@ -149,6 +149,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS程序结构：Appdelegate-UIApplication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/">iOS程序结构：Appdelegate&amp;UIApplication</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/" class="archive-article-date">
+  	<time datetime="2017-10-25T13:46:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iOS&#x5E94;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x5165;&#x53E3;&#x5927;&#x5BB6;&#x90FD;&#x77E5;&#x9053;&#xFF0C;&#x5C31;&#x662F;&#x90A3;&#x4E2A;&#x9879;&#x76EE;&#x5DE5;&#x7A0B;&#x91CC;&#x9762;&#x7684;main.m&#x4E2D;&#x7684;main()&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5728;xcode4.2&#x4E4B;&#x524D;main()&#x51FD;&#x6570;&#x662F;&#x8FD9;&#x6837;&#x7684;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">int main(int argc, char *argv[])</div><div class="line">{</div><div class="line">NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];</div><div class="line">int retVal = UIApplicationMain(argc, argv, nil, nil);</div><div class="line">[pool release];</div><div class="line">return retVal;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x800C;&#x6709;&#x4E86;ARC&#x4E4B;&#x540E;&#xFF0C;&#x5728;xcode4.2&#x4E4B;&#x540E;&#x53D8;&#x6210;&#x4E86;&#x8FD9;&#x6837;</p>
+        
+          <a class="article-more-a" href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/25/iOS程序结构：Appdelegate-UIApplication/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-iOS开发学习站点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -232,7 +311,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/15/Objective-c堆栈的理解/">Objective-c堆栈的理解</a>
+      <a class="article-title" href="/2017/09/15/Objective-c堆栈的理解/">Objective-c堆栈的理解(转)</a>
     </h1>
   
 
@@ -686,86 +765,6 @@
 
 
   
-    <article id="post-读书笔记之《新商业模式创新设计》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/读书笔记之《新商业模式创新设计》/">读书笔记之《新商业模式创新设计》</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/08/读书笔记之《新商业模式创新设计》/" class="archive-article-date">
-  	<time datetime="2017-04-08T11:13:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1491655699568&amp;di=47f5beda7f6040f66f51503a3bfd1f54&amp;imgtype=0&amp;src=http%3A%2F%2Fimg11.360buyimg.com%2Fn0%2Fjfs%2Ft2890%2F82%2F227341418%2F26476%2F1658c18a%2F5708f090Nf40ec837.jpg" alt=""><br>&#x901B;&#x4EAC;&#x4E1C;&#x65F6;&#x4E3A;&#x4E86;&#x51D1;&#x5355;&#xFF0C;&#x65E0;&#x610F;&#x4E2D;&#x4E70;&#x4E86;&#x8FD9;&#x672C;&#x4E66;&#xFF0C;&#x82B1;&#x51E0;&#x4E2A;&#x6708;&#x65F6;&#x95F4;&#x628A;&#x4ED6;&#x770B;&#x5B8C;&#x4E86;&#x3002;<br>&#x672C;&#x4E66;&#x4E3B;&#x8981;&#x662F;&#x4EE5;&#x8BB2;&#x8FF0;&#x5404;&#x79CD;&#x6848;&#x4F8B;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8BB2;&#x8FF0;&#x5404;&#x79CD;&#x5546;&#x4E1A;&#x6A21;&#x5F0F;&#x3002;&#x672C;&#x4E66;&#x5171;&#x5206;&#x56DB;&#x7AE0;&#xFF0C;&#x5206;&#x522B;&#x8BB2;&#x8FF0;&#x4E86;&#x4E92;&#x8054;&#x7F51;+&#xFF0C;&#x65B0;&#x5546;&#x4E1A;&#x6A21;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x5B9A;&#x4F4D;&#xFF0C;&#x8FD0;&#x7528;&#x548C;&#x53D1;&#x5C55;&#x3002;<br>&#x8FD9;&#x91CC;&#x628A;&#x6211;&#x89C9;&#x5F97;&#x4E66;&#x4E2D;&#x6BD4;&#x8F83;&#x6709;&#x610F;&#x601D;&#x7684;&#x4E1C;&#x897F;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;&#xFF0C;&#x65B9;&#x4FBF;&#x4EE5;&#x540E;&#x67E5;&#x9605;&#x5B66;&#x4E60;&#x3002;</p>
-        
-          <a class="article-more-a" href="/2017/04/08/读书笔记之《新商业模式创新设计》/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/08/读书笔记之《新商业模式创新设计》/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -879,10 +878,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React Native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
               </li>
              
@@ -891,7 +886,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color3">React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -900,6 +895,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">xcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">

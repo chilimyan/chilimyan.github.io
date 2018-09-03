@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/4 | chilim</title>
+  <title>Objective-C内存管理精解 | chilim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="chilim">
-<meta property="og:url" content="http://yoursite.com/archives/2017/04/index.html">
+  <meta name="description" content="&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x8868;&amp;#x6BCF;&amp;#x4E2A;&amp;#x5BF9;&amp;#x8C61;&amp;#x90FD;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x8868;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C内存管理精解">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/Objective-C内存管理精解/index.html">
 <meta property="og:site_name" content="chilim">
+<meta property="og:description" content="&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x8868;&amp;#x6BCF;&amp;#x4E2A;&amp;#x5BF9;&amp;#x8C61;&amp;#x90FD;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x8868;">
+<meta property="og:updated_time" content="2018-09-03T14:16:17.665Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chilim">
+<meta name="twitter:title" content="Objective-C内存管理精解">
+<meta name="twitter:description" content="&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x8868;&amp;#x6BCF;&amp;#x4E2A;&amp;#x5BF9;&amp;#x8C61;&amp;#x90FD;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;&amp;#x5BF9;&amp;#x5E94;&amp;#x7684;&amp;#x5F15;&amp;#x7528;&amp;#x8BA1;&amp;#x6570;&amp;#x8868;">
   
     <link rel="alternative" href="/atom.xml" title="chilim" type="application/atom+xml">
   
@@ -147,36 +151,184 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Objective-C内存管理精解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/10/网络安全之AES与RSA/" class="archive-article-date">
-  	<time datetime="2017-04-10T15:02:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/10/网络安全之AES与RSA/">网络安全之AES与RSA</a>
+    <h1 class="article-title" itemprop="name">
+      Objective-C内存管理精解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/03/Objective-C内存管理精解/" class="archive-article-date">
+  	<time datetime="2018-09-03T14:14:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="&#x5F15;&#x7528;&#x8BA1;&#x6570;"><a href="#&#x5F15;&#x7528;&#x8BA1;&#x6570;" class="headerlink" title="&#x5F15;&#x7528;&#x8BA1;&#x6570;"></a>&#x5F15;&#x7528;&#x8BA1;&#x6570;</h2><h3 id="&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;"><a href="#&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;" class="headerlink" title="&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;"></a>&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;</h3><p>&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#xFF0C;&#x82F9;&#x679C;&#x4F7F;&#x7528;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#x6765;&#x7BA1;&#x7406;&#x5404;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x8868;&#x4E2D;&#x8BB0;&#x5F55;&#x6709;&#x5404;&#x5BF9;&#x8C61;&#x5185;&#x5B58;&#x5757;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x4ECE;&#x800C;&#x6839;&#x636E;&#x5730;&#x5740;&#x627E;&#x5230;&#x5404;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5757;&#x3002;<br>&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#x6709;&#x51E0;&#x4E2A;&#x597D;&#x5904;&#xFF1A;</p>
+<ol>
+<li>&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5757;&#x7684;&#x5206;&#x914D;&#x65E0;&#x9700;&#x8003;&#x8651;&#x5185;&#x5B58;&#x5757;&#x7684;&#x5934;&#x90E8;&#xFF08;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#xFF0C;&#x5219;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5757;&#x5934;&#x90E8;&#x5C06;&#x7528;&#x6765;&#x5B58;&#x653E;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF09;</li>
+<li>&#x5373;&#x4F7F;&#x51FA;&#x73B0;&#x6545;&#x969C;&#x5BFC;&#x81F4;&#x5BF9;&#x8C61;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#x5757;&#x635F;&#x574F;&#xFF0C;&#x4F46;&#x53EA;&#x8981;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#x6CA1;&#x6709;&#x88AB;&#x7834;&#x574F;&#xFF0C;&#x5C31;&#x80FD;&#x591F;&#x786E;&#x8BA4;&#x5404;&#x5185;&#x5B58;&#x5757;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x5229;&#x7528;&#x5DE5;&#x5177;&#x68C0;&#x6D4B;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x65F6;&#xFF0C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#x7684;&#x8BB0;&#x5F55;&#x4E5F;&#x6709;&#x52A9;&#x4E8E;&#x68C0;&#x6D4B;&#x5404;&#x5BF9;&#x8C61;&#x7684;&#x6301;&#x6709;&#x8005;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;<a id="more"></a>
+&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x6301;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x4F7F;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x52A0;1&#xFF0C;&#x91CA;&#x653E;&#x5BF9;&#x8C61;&#x65F6;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF;1&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;0&#x65F6;&#xFF0C;&#x5BF9;&#x8C61;&#x88AB;&#x5E9F;&#x5F03;&#x3002;<h2 id="MRC&#x89C4;&#x5219;"><a href="#MRC&#x89C4;&#x5219;" class="headerlink" title="MRC&#x89C4;&#x5219;"></a>MRC&#x89C4;&#x5219;</h2><h3 id="&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7684;&#x601D;&#x8003;&#x65B9;&#x5F0F;"><a href="#&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7684;&#x601D;&#x8003;&#x65B9;&#x5F0F;" class="headerlink" title="&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7684;&#x601D;&#x8003;&#x65B9;&#x5F0F;"></a>&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x7684;&#x601D;&#x8003;&#x65B9;&#x5F0F;</h3><h4 id="&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x81EA;&#x5DF1;&#x6301;&#x6709;"><a href="#&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x81EA;&#x5DF1;&#x6301;&#x6709;" class="headerlink" title="&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x81EA;&#x5DF1;&#x6301;&#x6709;"></a>&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x81EA;&#x5DF1;&#x6301;&#x6709;</h4>&#x6BD4;&#x5982;&#x4F7F;&#x7528;<code>alloc</code>&#x3001;<code>new</code>&#x3001;<code>copy</code>&#x3001;<code>mutableCopy</code>&#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x81EA;&#x52A8;&#x52A0;1</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id obj = [[NSObject alloc] init];</div></pre></td></tr></table></figure>
+<h4 id="&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x81EA;&#x5DF1;&#x4E5F;&#x80FD;&#x6301;&#x6709;"><a href="#&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x81EA;&#x5DF1;&#x4E5F;&#x80FD;&#x6301;&#x6709;" class="headerlink" title="&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x81EA;&#x5DF1;&#x4E5F;&#x80FD;&#x6301;&#x6709;"></a>&#x975E;&#x81EA;&#x5DF1;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x81EA;&#x5DF1;&#x4E5F;&#x80FD;&#x6301;&#x6709;</h4><p>&#x9664;&#x4E86;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#x4E4B;&#x5916;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x4F7F;&#x7528;<code>retain</code>&#x65B9;&#x6CD5;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">id obj = [NSMutableArray array];//&#x751F;&#x6210;&#x5BF9;&#x8C61;</div><div class="line">[obj  retain];//&#x6301;&#x6709;&#x5BF9;&#x8C61;</div></pre></td></tr></table></figure>
+<h4 id="&#x4E0D;&#x518D;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x91CA;&#x653E;"><a href="#&#x4E0D;&#x518D;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x91CA;&#x653E;" class="headerlink" title="&#x4E0D;&#x518D;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x91CA;&#x653E;"></a>&#x4E0D;&#x518D;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#x91CA;&#x653E;</h4><p>&#x5982;&#xFF1A;<code>release</code>&#x65B9;&#x6CD5;</p>
+<h4 id="&#x975E;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x91CA;&#x653E;"><a href="#&#x975E;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x91CA;&#x653E;" class="headerlink" title="&#x975E;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x91CA;&#x653E;"></a>&#x975E;&#x81EA;&#x5DF1;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x91CA;&#x653E;</h4><p>&#x5982;&#xFF1A;<code>dealloc</code>&#x65B9;&#x6CD5;</p>
+<h3 id="retain&#x3001;retainCount&#x3001;release&#x7684;&#x5B9E;&#x73B0;"><a href="#retain&#x3001;retainCount&#x3001;release&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="retain&#x3001;retainCount&#x3001;release&#x7684;&#x5B9E;&#x73B0;"></a>retain&#x3001;retainCount&#x3001;release&#x7684;&#x5B9E;&#x73B0;</h3><p>&#x8C03;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;<code>__CFDoExternRefOperation</code>&#xFF0C;&#x6839;&#x636E;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#x548C;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#x53BB;&#x4FEE;&#x6539;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;</p>
+<h3 id="autorelease"><a href="#autorelease" class="headerlink" title="autorelease"></a>autorelease</h3><p>&#x5BF9;&#x8C61;&#x8C03;&#x7528;<code>autorelease</code>&#x540E;&#x88AB;&#x52A0;&#x5165;<code>NSAutoreleasePool</code>&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x4E2D;&#xFF0C;&#x5F53;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x5E9F;&#x5F03;&#x65F6;&#xFF0C;&#x5BF9;&#x8C61;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528;<code>release</code>&#x65B9;&#x6CD5;</p>
+<p>&#x5728;&#x5927;&#x91CF;&#x4EA7;&#x751F;<code>autorelease</code>&#x7684;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x8FD9;&#x65F6;&#x5E94;&#x8BE5;&#x624B;&#x52A8;&#x751F;&#x6210;&#x4E00;&#x4E2A;<code>NSAutoreleasePool</code>&#xFF0C;&#x628A;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x653E;&#x8FDB;&#x8FD9;&#x4E2A;&#x6C60;&#x5B50;&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x5B8C;&#x4E4B;&#x540E;&#x518D;&#x624B;&#x52A8;<code>[pool drain]</code>&#x91CA;&#x653E;&#x6C60;&#x5B50;</p>
+<h3 id="autorelease&#x7684;&#x5B9E;&#x73B0;"><a href="#autorelease&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="autorelease&#x7684;&#x5B9E;&#x73B0;"></a>autorelease&#x7684;&#x5B9E;&#x73B0;</h3><p>&#x8C03;&#x7528;<code>autorelease</code>&#x65B9;&#x6CD5;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x901A;&#x8FC7;add&#x65B9;&#x6CD5;&#x5C06;&#x5BF9;&#x8C61;&#x653E;&#x5165;&#x4E00;&#x4E2A;<code>NSAutoreleasePool</code>&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x4E2D;&#x3002;&#x5148;&#x662F;&#x7528;<code>push</code>&#x65B9;&#x6CD5;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;<code>NSAutorelease</code>&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#xFF0C;&#x7136;&#x540E;&#x7528;<code>pop</code>&#x65B9;&#x6CD5;&#x5E9F;&#x5F03;&#x4E00;&#x4E2A;<code>NSAutorelease</code>&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];</div><div class="line">//&#x7B49;&#x540C;&#x4E8E;objc_autoreleasePoolPush()&#x751F;&#x6210;&#x6216;&#x6301;&#x6709;NSAutoreleasePool&#x5BF9;&#x8C61;</div><div class="line"></div><div class="line">id obj= [[NSObject alloc] init];</div><div class="line">[obj autorelease];</div><div class="line">//&#x7B49;&#x540C;&#x4E8E;objc_autorelease(obj)&#x5C06;&#x5BF9;&#x8C61;&#x8FFD;&#x52A0;&#x5230;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x4E2D;</div><div class="line">[pool drain];</div></pre></td></tr></table></figure>
+<h3 id="autorelease&#x4E00;&#x4E2A;NSAutoreleasePool&#x5BF9;&#x8C61;&#x4F1A;&#x53D1;&#x751F;&#x5F02;&#x5E38;"><a href="#autorelease&#x4E00;&#x4E2A;NSAutoreleasePool&#x5BF9;&#x8C61;&#x4F1A;&#x53D1;&#x751F;&#x5F02;&#x5E38;" class="headerlink" title="autorelease&#x4E00;&#x4E2A;NSAutoreleasePool&#x5BF9;&#x8C61;&#x4F1A;&#x53D1;&#x751F;&#x5F02;&#x5E38;"></a>autorelease&#x4E00;&#x4E2A;NSAutoreleasePool&#x5BF9;&#x8C61;&#x4F1A;&#x53D1;&#x751F;&#x5F02;&#x5E38;</h3><p>&#x56E0;&#x4E3A;&#x65E0;&#x8BBA;&#x8C03;&#x7528;&#x54EA;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;<code>autorelease</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5B9E;&#x73B0;&#x4E0A;&#x90FD;&#x662F;&#x8C03;&#x7528;<code>NSObject</code>&#x7C7B;&#x7684;<code>autorelease</code>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;<code>NSAutorelease</code>&#x7C7B;&#xFF0C;<code>autorelease</code>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x5DF2;&#x88AB;&#x8BE5;&#x7C7B;&#x91CD;&#x8F7D;&#x3002;&#x56E0;&#x6B64;&#x8FD0;&#x884C;&#x65F6;&#x5C31;&#x4F1A;&#x51FA;&#x9519;</p>
+<h2 id="ARC&#x89C4;&#x5219;"><a href="#ARC&#x89C4;&#x5219;" class="headerlink" title="ARC&#x89C4;&#x5219;"></a>ARC&#x89C4;&#x5219;</h2><p>ARC&#x53EA;&#x662F;&#x81EA;&#x52A8;&#x7684;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5904;&#x7406;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x76F8;&#x5173;&#x90E8;&#x5206;</p>
+<h3 id="ARC&#x81EA;&#x52A8;&#x8FFD;&#x52A0;&#x6240;&#x6709;&#x6743;&#x4FEE;&#x9970;&#x7B26;&#xFF0C;&#x9644;&#x6709;&#x8FD9;&#x4E9B;&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x4E3A;nil"><a href="#ARC&#x81EA;&#x52A8;&#x8FFD;&#x52A0;&#x6240;&#x6709;&#x6743;&#x4FEE;&#x9970;&#x7B26;&#xFF0C;&#x9644;&#x6709;&#x8FD9;&#x4E9B;&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x4E3A;nil" class="headerlink" title="ARC&#x81EA;&#x52A8;&#x8FFD;&#x52A0;&#x6240;&#x6709;&#x6743;&#x4FEE;&#x9970;&#x7B26;&#xFF0C;&#x9644;&#x6709;&#x8FD9;&#x4E9B;&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x4E3A;nil"></a>ARC&#x81EA;&#x52A8;&#x8FFD;&#x52A0;&#x6240;&#x6709;&#x6743;&#x4FEE;&#x9970;&#x7B26;&#xFF0C;&#x9644;&#x6709;&#x8FD9;&#x4E9B;&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x4E3A;nil</h3><p>id <strong>strong obj0&#x7B49;&#x4EF7;&#x4E8E;id </strong>strong obj0 = nil</p>
+<h4 id="strong"><a href="#strong" class="headerlink" title="__strong"></a>__strong</h4><p>&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x9ED8;&#x8BA4;&#x7684;&#x6240;&#x6709;&#x6743;&#x4FEE;&#x9970;&#x7B26;,&#x8868;&#x793A;&#x5BF9;&#x5BF9;&#x8C61;&#x7684;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x6301;&#x6709;&#x5F3A;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x8D85;&#x51FA;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x65F6;&#xFF0C;&#x968F;&#x7740;&#x5F3A;&#x5F15;&#x7528;&#x7684;&#x5931;&#x6548;&#xFF0C;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x968F;&#x4E4B;&#x91CA;&#x653E;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id __strong obj = [[NSObject alloc] init]</div><div class="line">&#x5728;ARC&#x65E0;&#x6548;&#x65F6;&#x7B49;&#x4EF7;&#x4E8E;</div><div class="line">id obj = [[NSObject alloc] init];</div><div class="line">[obj release];</div></pre></td></tr></table></figure>
+<p><code>__strong</code>&#x53D8;&#x91CF;&#x4E92;&#x76F8;&#x8D4B;&#x503C;&#x4E5F;&#x80FD;&#x6B63;&#x786E;&#x7BA1;&#x7406;&#x5BF9;&#x8C61;&#x5185;&#x5B58;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">id __strong obj0 = [[NSObject alloc] init];//obj0&#x6301;&#x6709;&#x5BF9;&#x8C61;A&#x7684;&#x5F3A;&#x5F15;&#x7528;</div><div class="line">id __strong obj1 = [[NSObject alloc] init];//obj1&#x6301;&#x6709;&#x5BF9;&#x8C61;B&#x7684;&#x5F3A;&#x5F15;&#x7528;</div><div class="line">obj0 = obj1&#xFF1B;</div><div class="line">&#x5F15;&#x7528;obj0&#x88AB;&#x8D4B;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x539F;&#x5148;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x5BF9;&#x8C61;A&#x7684;&#x5F3A;&#x5F15;&#x7528;&#x5931;&#x6548;&#xFF0C;&#x5BF9;&#x8C61;A&#x7684;&#x6240;&#x6709;&#x8005;&#x4E0D;&#x5B58;&#x5728;&#x56E0;&#x6B64;&#x5E9F;&#x5F03;&#x5BF9;&#x8C61;A</div><div class="line">id __strong obj2 = nil;//obj2&#x4E0D;&#x6301;&#x6709;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;</div></pre></td></tr></table></figure>
+<h4 id="weak"><a href="#weak" class="headerlink" title="__weak"></a>__weak</h4><p><code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x8868;&#x793A;&#x5F31;&#x5F15;&#x7528;&#xFF0C;&#x4E0D;&#x80FD;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;&#x89E3;&#x51B3;<code>__strong</code>&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">id __weak obj = [[NSObject alloc] init];</div><div class="line">&#x8FD9;&#x53E5;&#x4EE3;&#x7801;&#x4F1A;&#x6709;&#x8B66;&#x544A;&#x3002;&#x56E0;&#x4E3A;obj&#x5E76;&#x4E0D;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x6837;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x4F1A;&#x88AB;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#xFF0C;obj=nil&#x3002;</div><div class="line">&#x4F46;&#x662F;&#x5982;&#x679C;&#x8FD9;&#x6837;&#x5148;&#x8D4B;&#x503C;&#x7ED9;&#x5F3A;&#x5F15;&#x7528;&#xFF0C;&#x518D;&#x8D4B;&#x503C;&#x7ED9;&#x5F31;&#x5F15;&#x7528;&#x5C31;&#x6CA1;&#x95EE;&#x9898;&#xFF1A;</div><div class="line">id __strong obj0 = [[NSObject alloc] init];</div><div class="line">id __weak obj1 = obj0;</div></pre></td></tr></table></figure>
+<p>&#x6709;<code>__weak</code>&#x4FEE;&#x9970;&#x67D0;&#x5BF9;&#x8C61;&#x7684;&#x5F31;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x88AB;&#x5E9F;&#x5F03;&#xFF0C;&#x8BE5;&#x5F31;&#x5F15;&#x7528;&#x5C06;&#x5931;&#x6548;&#x81EA;&#x52A8;&#x8D4B;&#x503C;&#x4E3A;<code>nil</code></p>
+<p>&#x5728;&#x8BBF;&#x95EE;&#x9644;&#x6709;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#x5FC5;&#x987B;&#x8BBF;&#x95EE;&#x6CE8;&#x518C;&#x5230;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;__weak&#x4FEE;&#x9970;&#x7B26;&#x53EA;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#x7684;&#x5F31;&#x5F15;&#x7528;&#xFF0C;&#x5728;&#x8BBF;&#x95EE;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x6709;&#x53EF;&#x80FD;&#x88AB;&#x5E9F;&#x5F03;&#xFF0C;&#x5982;&#x679C;&#x628A;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x5BF9;&#x8C61;&#x6CE8;&#x518C;&#x5230;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x4E2D;&#xFF0C;&#x5219;&#x5728;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x5E9F;&#x5F03;&#x524D;&#x5BF9;&#x8C61;&#x90FD;&#x5B58;&#x5728;&#x3002;</p>
+<h4 id="unsafe-unretained"><a href="#unsafe-unretained" class="headerlink" title="__unsafe_unretained"></a>__unsafe_unretained</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id __unsafe_unretained obj1 = nil;</div><div class="line">id __strong obj0 = [[NSObject alloc] init];</div><div class="line"> obj1 = obj0;</div><div class="line">&#x867D;&#x7136;obj0&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x7ED9;obj1&#xFF0C;&#x4F46;&#x662F;obj1&#x53D8;&#x91CF;&#x65E2;&#x4E0D;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#x7684;&#x5F3A;&#x5F15;&#x7528;&#x4E5F;&#x4E0D;&#x6301;&#x6709;&#x5F31;&#x5F15;&#x7528;</div></pre></td></tr></table></figure>
+<p>&#x540C;<code>__weak</code>&#x4E00;&#x6837;,&#x4E0D;&#x80FD;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#xFF0C;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x4F1A;&#x7ACB;&#x5373;&#x91CA;&#x653E;<br>&#x4E0E;<code>__weak</code>&#x4E0D;&#x540C;&#xFF0C;&#x5F53;&#x5BF9;&#x8C61;&#x88AB;&#x5E9F;&#x5F03;&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x6307;&#x5411;<code>nil</code>&#x800C;&#x662F;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x91CE;&#x6307;&#x9488;&#x3002;</p>
+<h4 id="autoreleasing"><a href="#autoreleasing" class="headerlink" title="__autoreleasing"></a>__autoreleasing</h4><p>&#x5728;<code>ARC</code>&#x4E2D;&#x7528;<code>autoreleasing</code>&#x4FEE;&#x9970;&#x7684;&#x5BF9;&#x8C61;&#x7B49;&#x4EF7;&#x4E8E;<code>MRC</code>&#x4E2D;&#x5BF9;&#x8C61;&#x8C03;&#x7528;<code>autorelease</code>&#x65B9;&#x6CD5;</p>
+<p>&#x540C;<code>__strong</code>&#x4E00;&#x6837;&#xFF0C;&#x6CA1;&#x6709;&#x663E;&#x5F0F;&#x6307;&#x5B9A;<code>__autoreleasing</code>&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x6CE8;&#x518C;&#x5230;<code>autoreleasePool</code></p>
+<h3 id="ARC&#x89C4;&#x5219;-1"><a href="#ARC&#x89C4;&#x5219;-1" class="headerlink" title="ARC&#x89C4;&#x5219;"></a>ARC&#x89C4;&#x5219;</h3><ul>
+<li>&#x4E0D;&#x80FD;&#x4F7F;&#x7528;<code>retain/releaase/retainCount/autorelease</code></li>
+<li>&#x4E0D;&#x80FD;&#x4F7F;&#x7528;<code>NSAllocateObject/NSDeallocateObject</code></li>
+<li>&#x4E0D;&#x8981;&#x663E;&#x793A;&#x8C03;&#x7528;<code>dealloc</code></li>
+<li>&#x4F7F;&#x7528;<code>@autoreleasepool</code>&#x5757;&#x4EE3;&#x66FF;<code>NSAutoreleasePool</code></li>
+<li>&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x533A;&#x57DF;<code>NSZone</code></li>
+<li>&#x5BF9;&#x8C61;&#x578B;&#x53D8;&#x91CF;&#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;C&#x8BED;&#x8A00;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x6210;&#x5458;</li>
+<li>&#x663E;&#x793A;&#x8F6C;&#x6362;<code>&#x201C;id&#x201D;</code>&#x548C;<code>&#x201C;voic *&#x201D;</code>&#xFF08;&#x901A;&#x8FC7;<code>__bridge</code>&#x8F6C;&#x6362;&#xFF0C;<code>id</code>&#x548C;<code>void *</code>&#x5C31;&#x80FD;&#x4E92;&#x76F8;&#x8F6C;&#x6362;&#xFF09;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id obj = [[NSObject alloc] init]</div><div class="line">void *p = (__bridge void *)obj</div><div class="line">&#x4F46;&#x662F;__bridge&#x8DDF;__unsafe_unretained&#x4E00;&#x6837;&#x90FD;&#x662F;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;__bridge_retained&#xFF0C;&#x8FD9;&#x4E2A;&#x76F8;&#x5F53;&#x4E8E;retain&#x3002;&#x800C;__bridge_transfer&#x76F8;&#x5F53;&#x4E8E;release</div></pre></td></tr></table></figure>
+<p>&#x65E0;&#x8BBA;&#x662F;ARC&#x65E0;&#x6548;&#x8FD8;&#x662F;&#x6709;&#x6548;&#x7528;&#x4E8E;&#x5BF9;&#x8C61;&#x751F;&#x6210;&#x6301;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x9075;&#x5B88;&#x4EE5;&#x4E0B;&#x547D;&#x540D;&#x89C4;&#x5219;&#xFF1A;<br><code>alloc</code>&#x3001;<code>new</code>&#x3001;<code>copy</code>&#x3001;<code>mutableCopy</code><br>&#x4F46;&#x662F;&#x5728;<code>ARC</code>&#x6709;&#x6548;&#x65F6;&#x65B0;&#x589E;<code>init</code>&#x547D;&#x540D;&#x89C4;&#x5219;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x662F;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x5FC5;&#x987B;&#x8981;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x3002;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x5E94;&#x4E3A;<code>id</code>&#x7C7B;&#x578B;&#x6216;&#x8005;&#x8BE5;&#x65B9;&#x6CD5;&#x58F0;&#x660E;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x8BE5;&#x7C7B;&#x7684;&#x8D85;&#x7C7B;&#x6216;&#x8005;&#x5B50;&#x7C7B;&#x3002;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x5E76;&#x4E0D;&#x6CE8;&#x518C;&#x5230;<code>autoreleasepool</code>&#x4E0A;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x53EA;&#x662F;&#x5BF9;<code>alloc</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x5E76;&#x8FD4;&#x56DE;&#x8BE5;&#x5BF9;&#x8C61;</p>
+<h3 id="&#x5C5E;&#x6027;"><a href="#&#x5C5E;&#x6027;" class="headerlink" title="&#x5C5E;&#x6027;"></a>&#x5C5E;&#x6027;</h3><table>
+<thead>
+<tr>
+<th>&#x58F0;&#x660E;&#x7684;&#x5C5E;&#x6027;</th>
+<th>&#x5BF9;&#x5E94;&#x7684;&#x6240;&#x6709;&#x6743;&#x4FEE;&#x9970;&#x7B26;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assign</td>
+<td>__unsafe_unretained&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>__strong&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+<tr>
+<td>retain</td>
+<td>__strong&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+<tr>
+<td>strong</td>
+<td>__strong&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+<tr>
+<td>unsafe_unretained</td>
+<td>__unsafe_unretained&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+<tr>
+<td>weak</td>
+<td>__weak&#x4FEE;&#x9970;&#x7B26;</td>
+</tr>
+</tbody>
+</table>
+<p><code>copy</code>&#x5C5E;&#x6027;&#x4E0D;&#x662F;&#x7B80;&#x5355;&#x7684;&#x8D4B;&#x503C;&#xFF0C;&#x5B83;&#x8D4B;&#x503C;&#x7684;&#x662F;&#x901A;&#x8FC7;<code>NSCopying</code>&#x63A5;&#x53E3;&#x7684;<code>copyWithZone&#xFF1A;</code>&#x65B9;&#x6CD5;&#x590D;&#x5236;&#x8D4B;&#x503C;&#x6E90;&#x6240;&#x751F;&#x6210;&#x7684;&#x5BF9;&#x8C61;</p>
+<h3 id="&#x6570;&#x7EC4;"><a href="#&#x6570;&#x7EC4;" class="headerlink" title="&#x6570;&#x7EC4;"></a>&#x6570;&#x7EC4;</h3><p>&#x4F7F;&#x7528;<code>calloc</code>&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4F7F;&#x5206;&#x914D;&#x7ED9;&#x9644;&#x6709;<code>__strong</code>&#x4FEE;&#x9970;&#x7B26;&#x53D8;&#x91CF;&#x7684;&#x6570;&#x7EC4;&#x521D;&#x59CB;&#x5316;&#x4E3A;<code>nil</code>&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">array = (id __strong *)calloc(entries, sizeof(id))</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;C&#x51FD;&#x6570;&#x7684;<code>malloc</code>&#x5219;&#x5206;&#x914D;&#x540E;&#x8FD8;&#x9700;&#x8981;&#x7528;<code>memset</code>&#x51FD;&#x6570;&#x5C06;&#x5185;&#x5B58;&#x586B;&#x5145;&#x4E3A;0&#x3002;<br>&#x6BD4;&#x5982;&#x8FD9;&#x6837;&#x5199;&#x662F;&#x4E0D;&#x5BF9;&#x7684;:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">array = (id __strong *)malloc(sizeof(id) *entries);</div><div class="line">for (NSUInteger i = 0; i&lt; entries; i++)</div><div class="line">      array[i] = nil;</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;malloc&#x51FD;&#x6570;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x6CA1;&#x6709;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A;0&#xFF0C;&#x56E0;&#x6B64;nil&#x4F1A;&#x88AB;&#x8D4B;&#x503C;&#x7ED9;&#x9644;&#x6709;__strong&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x5E76;&#x88AB;&#x8D4B;&#x503C;&#x4E86;&#x968F;&#x673A;&#x5730;&#x5740;&#x7684;&#x53D8;&#x91CF;&#x4E2D;&#xFF0C;&#x4ECE;&#x800C;&#x91CA;&#x653E;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x52A8;&#x6001;&#x6570;&#x7EC4;&#x4E2D;&#x64CD;&#x4F5C;&#x9644;&#x6709;<code>__strong</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#x9700;&#x8981;&#x624B;&#x52A8;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;&#x5982;&#xFF1A;<code>free(array)</code>;&#x56E0;&#x4E3A;&#x52A8;&#x6001;&#x6570;&#x7EC4;&#x7F16;&#x8BD1;&#x5668;&#x4E0D;&#x80FD;&#x786E;&#x5B9A;&#x6570;&#x7EC4;&#x7684;&#x751F;&#x5B58;&#x5468;&#x671F;&#xFF0C;&#x65E0;&#x4ECE;&#x5904;&#x7406;&#x3002;<br>&#x800C;&#x9759;&#x6001;&#x6570;&#x7EC4;&#x5219;&#x4E0D;&#x9700;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x9759;&#x6001;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x80FD;&#x591F;&#x6839;&#x636E;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x81EA;&#x52A8;&#x63D2;&#x5165;&#x91CA;&#x653E;&#x8D4B;&#x503C;&#x5BF9;&#x8C61;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<h2 id="ARC&#x5B9E;&#x73B0;"><a href="#ARC&#x5B9E;&#x73B0;" class="headerlink" title="ARC&#x5B9E;&#x73B0;"></a>ARC&#x5B9E;&#x73B0;</h2><h3 id="strong&#x4FEE;&#x9970;&#x7B26;"><a href="#strong&#x4FEE;&#x9970;&#x7B26;" class="headerlink" title="__strong&#x4FEE;&#x9970;&#x7B26;"></a>__strong&#x4FEE;&#x9970;&#x7B26;</h3><p><code>alloc&#x3001;new&#x3001;copy&#x3001;mutableCopy</code>&#x751F;&#x6210;&#x5E76;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id obj = objc_msgSend(NSObject, @selector(alloc));</div><div class="line">objc_msgSend(obj,@selector(init));</div><div class="line">objc_release(obj);//ARC&#x6709;&#x6548;&#x65F6;&#x81EA;&#x52A8;&#x63D2;&#x5165;&#x4E86;release&#x65B9;&#x6CD5;</div></pre></td></tr></table></figure>
+<p>&#x5176;&#x4ED6;&#x751F;&#x6210;&#x5BF9;&#x8C61;&#x5982;&#xFF1A;<code>id __strong obj = [NSMutableArray array];</code>&#x7684;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">id obj = objc_msgSend(NSMutableArray, @selector(array));</div><div class="line">objc_retainAutoreleasedReturnValue(obj);</div><div class="line">objc_release(obj);</div></pre></td></tr></table></figure>
+<h3 id="weak&#x4FEE;&#x9970;&#x7B26;"><a href="#weak&#x4FEE;&#x9970;&#x7B26;" class="headerlink" title="__weak&#x4FEE;&#x9970;&#x7B26;"></a>__weak&#x4FEE;&#x9970;&#x7B26;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id __weak obj1 = obj;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</div><div class="line">id obj1;</div><div class="line">objc_initWeak(&amp;obj1,obj);//objc_initWeak&#x51FD;&#x6570;&#x5C06;&#x53D8;&#x91CF;&#x521D;&#x59CB;&#x5316;&#x4E3A;0&#x5373;obj1 = 0&#xFF1B;&#x7136;&#x540E;&#x518D;&#x8C03;&#x7528;objc_storeWeak(&amp;obj1,obj);&#x5C06;&#x4FEE;&#x9970;&#x7B26;__weak&#x7684;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#x6CE8;&#x518C;&#x5230;weak&#x8868;&#x4E2D;&#x3002;</div><div class="line">objc_destroyWeak(&amp;obj1);//&#x76F8;&#x5F53;&#x4E8E;&#x8C03;&#x7528;objc_storeWeak(&amp;obj1,0);&#x628A;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#x4ECE;weak&#x8868;&#x4E2D;&#x5220;&#x9664;&#x3002;</div></pre></td></tr></table></figure>
+<p>&#x82E5;&#x9644;&#x6709;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x53D8;&#x91CF;&#x6240;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x5E9F;&#x5F03;&#xFF0C;&#x5219;&#x5C06;<code>nil</code>&#x8D4B;&#x503C;&#x7ED9;&#x8BE5;&#x53D8;&#x91CF;</p>
+<p>&#x4F7F;&#x7528;&#x9644;&#x6709;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5373;&#x662F;&#x4F7F;&#x7528;&#x6CE8;&#x518C;&#x5230;<code>autoreleasepool</code>&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">id __weak obj1 = obj;</div><div class="line">&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</div><div class="line">id obj1;</div><div class="line">objc_initWeak(&amp;obj1, obj);//&#x751F;&#x6210;&#x4E00;&#x4E2A;Weak&#x5BF9;&#x8C61;</div><div class="line">id tmp = objc_loadWeakRetained(&amp;obj1);//&#x5199;&#x5165;weak&#x8868;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5F15;&#x7528;</div><div class="line">objc_autorelease(tmp);//&#x5C06;&#x5BF9;&#x8C61;&#x6CE8;&#x518C;&#x5230;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;</div><div class="line">objc_destroyWeak(&amp;obj1);</div></pre></td></tr></table></figure>
+<p>&#x6BCF;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#x9644;&#x6709;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x90FD;&#x4F1A;&#x6CE8;&#x518C;&#x4E00;&#x6B21;&#x5BF9;&#x8C61;&#x5230;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id __weak o = obj;</div><div class="line">NSLog(@&quot;1 %@&quot;,o);</div><div class="line">NSLog(@&quot;2 %@&quot;,o);</div><div class="line">NSLog(@&quot;3 %@&quot;,o);</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x6CE8;&#x518C;&#x4E86;3&#x6B21;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x3002;&#x4F46;&#x662F;&#x5C06;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x53D8;&#x91CF;&#x8D4B;&#x7ED9;<code>__strong</code>&#x4FEE;&#x9970;&#x7684;&#x53D8;&#x91CF;&#x5C31;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">id __weak o = obj;</div><div class="line">id tmp = o;</div><div class="line">NSLog(@&quot;1 %@&quot;,tmp);</div><div class="line">NSLog(@&quot;2 %@&quot;,tmp);</div><div class="line">NSLog(@&quot;3 %@&quot;,tmp);</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x53EA;&#x6CE8;&#x518C;&#x4E86;&#x4E00;&#x6B21;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;<br>&#x56E0;&#x6B64;&#x5728;<code>@autoreleasePool</code>&#x5757;&#x7ED3;&#x675F;&#x4E4B;&#x524D;&#x90FD;&#x53EF;&#x4EE5;&#x653E;&#x5FC3;&#x4F7F;&#x7528;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x53D8;&#x91CF;</p>
+<h4 id="&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x8FC7;&#x7A0B;&#xFF1A;objc-release&#x6267;&#x884C;&#x6B65;&#x9AA4;"><a href="#&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x8FC7;&#x7A0B;&#xFF1A;objc-release&#x6267;&#x884C;&#x6B65;&#x9AA4;" class="headerlink" title="&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x8FC7;&#x7A0B;&#xFF1A;objc_release&#x6267;&#x884C;&#x6B65;&#x9AA4;"></a>&#x5BF9;&#x8C61;&#x91CA;&#x653E;&#x8FC7;&#x7A0B;&#xFF1A;objc_release&#x6267;&#x884C;&#x6B65;&#x9AA4;</h4><ol>
+<li>&#x8C03;&#x7528;<code>objc_release</code></li>
+<li>&#x56E0;&#x4E3A;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A;0&#x6240;&#x4EE5;&#x6267;&#x884C;<code>dealloc</code></li>
+<li>&#x8C03;&#x7528;<code>_objc_rootDealloc</code></li>
+<li>&#x8C03;&#x7528;<code>object_dispose</code></li>
+<li>&#x8C03;&#x7528;<code>objc_destructInstance</code></li>
+<li>&#x8C03;&#x7528;<code>objc_clear_deallocating</code></li>
+</ol>
+<blockquote>
+<p>1.&#x4ECE;<code>weak</code>&#x8868;&#x4E2D;&#x83B7;&#x53D6;&#x5E9F;&#x5F03;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x4E3A;&#x952E;&#x503C;&#x7684;&#x8BB0;&#x5F55;<br>2.&#x5C06;&#x5305;&#x542B;&#x5728;&#x8BB0;&#x5F55;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x9644;&#x6709;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x8D4B;&#x503C;&#x4E3A;<code>nil</code><br>3.&#x4ECE;<code>weak</code>&#x8868;&#x4E2D;&#x5220;&#x9664;&#x8BE5;&#x8BB0;&#x5F55;<br>4.&#x4ECE;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x8868;&#x4E2D;&#x5220;&#x9664;&#x5E9F;&#x5F03;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#x4E3A;&#x952E;&#x503C;&#x7684;&#x8BB0;&#x5F55;</p>
+</blockquote>
+<h4 id="&#x4F7F;&#x7528;-weak&#x4FEE;&#x9970;&#x7B26;&#x65F6;&#xFF0C;&#x4EE5;&#x4E0B;&#x6E90;&#x4EE3;&#x7801;&#x4F1A;&#x5F15;&#x8D77;&#x7F16;&#x8BD1;&#x8B66;&#x544A;"><a href="#&#x4F7F;&#x7528;-weak&#x4FEE;&#x9970;&#x7B26;&#x65F6;&#xFF0C;&#x4EE5;&#x4E0B;&#x6E90;&#x4EE3;&#x7801;&#x4F1A;&#x5F15;&#x8D77;&#x7F16;&#x8BD1;&#x8B66;&#x544A;" class="headerlink" title="&#x4F7F;&#x7528;__weak&#x4FEE;&#x9970;&#x7B26;&#x65F6;&#xFF0C;&#x4EE5;&#x4E0B;&#x6E90;&#x4EE3;&#x7801;&#x4F1A;&#x5F15;&#x8D77;&#x7F16;&#x8BD1;&#x8B66;&#x544A;"></a>&#x4F7F;&#x7528;__weak&#x4FEE;&#x9970;&#x7B26;&#x65F6;&#xFF0C;&#x4EE5;&#x4E0B;&#x6E90;&#x4EE3;&#x7801;&#x4F1A;&#x5F15;&#x8D77;&#x7F16;&#x8BD1;&#x8B66;&#x544A;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id __weak obj = [[NSObject alloc] init];</div></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#xFF0C;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;<br>&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">id obj ;</div><div class="line">id tmp = objc_msgSend(NSObject, @selector(alloc));</div><div class="line">objc_msgSend(tmp,@selector(init));</div><div class="line">objc_initWeak(&amp;obj, tmp);</div><div class="line">objc_release(tmp);</div><div class="line">objc_destoryWeak(&amp;object);</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4F1A;&#x5F15;&#x53D1;&#x8B66;&#x544A;&#xFF0C;&#x56E0;&#x4E3A;&#x7F16;&#x8BD1;&#x5668;&#x5224;&#x65AD;&#x751F;&#x6210;&#x5E76;&#x6301;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x5E76;&#x4E0D;&#x80FD;&#x7EE7;&#x7EED;&#x6301;&#x6709;&#xFF0C;<code>__weak</code>&#x662F;&#x4E0D;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#x7684;.&#x6240;&#x4EE5;&#x5BF9;&#x8C61;&#x4F1A;&#x88AB;&#x7ACB;&#x5373;&#x901A;&#x8FC7;<code>objc_release</code>&#x51FD;&#x6570;&#x91CA;&#x653E;&#x548C;&#x5E9F;&#x5F03;&#x3002;<code>obj</code>&#x5219;&#x4F1A;&#x4E3A;<code>nil</code><br>&#x4F7F;&#x7528;<code>_unsafe_unretained</code>&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x53EA;&#x662F;&#x4E0D;&#x4F1A;&#x628A;&#x5BF9;&#x8C61;&#x7F6E;&#x4E3A;<code>nil</code>&#xFF0C;&#x800C;&#x662F;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x91CE;&#x6307;&#x9488;</p>
+<h3 id="autoreleasing&#x4FEE;&#x9970;&#x7B26;"><a href="#autoreleasing&#x4FEE;&#x9970;&#x7B26;" class="headerlink" title="__autoreleasing&#x4FEE;&#x9970;&#x7B26;"></a>__autoreleasing&#x4FEE;&#x9970;&#x7B26;</h3><p>&#x5C06;&#x5BF9;&#x8C61;&#x8D4B;&#x503C;&#x7ED9;&#x9644;&#x6709;<code>__autoreleasing</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x53D8;&#x91CF;&#x7B49;&#x540C;&#x4E8E;<code>ARC</code>&#x65E0;&#x6548;&#x65F6;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x7684;<code>autorelease</code>&#x65B9;&#x6CD5;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@autoreleasepool{</div><div class="line">         id __autoreleasing obj = [[NSObject alloc] init];</div><div class="line">}</div><div class="line">&#x4EE5;&#x4E0A;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</div><div class="line">id pool = objc_autoreleasePoolPush();</div><div class="line">id obj = objc_msgSend(NSObject, @selector(alloc));</div><div class="line">objc_msgSend(obj, @selector(init));</div><div class="line">objc_autorelease(obj);//&#x5982;&#x679C;&#x4F7F;&#x7528;alloc&#x3001;new&#x3001;copy&#x3001;mutableCopy&#x65B9;&#x6CD5;&#x4E4B;&#x5916;&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x4F7F;&#x7528;&#x6CE8;&#x518C;&#x5230;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x6C60;&#x7684;&#x5BF9;&#x8C61;&#x5219;&#x8FD9;&#x91CC;&#x6267;&#x884C;objc_retainAutoreleasedReturnValue(obj);&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4ED6;&#x4E0D;&#x53D8;</div><div class="line">objc_autoreleasePoolPop(obj);</div></pre></td></tr></table></figure>
+<h3 id="&#x5F15;&#x7528;&#x8BA1;&#x6570;-1"><a href="#&#x5F15;&#x7528;&#x8BA1;&#x6570;-1" class="headerlink" title="&#x5F15;&#x7528;&#x8BA1;&#x6570;"></a>&#x5F15;&#x7528;&#x8BA1;&#x6570;</h3><ul>
+<li>&#x4F7F;&#x7528;<code>__strong</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x8BA1;&#x6570;+1</li>
+<li>&#x4F7F;&#x7528;<code>__autoreleasing</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x8BA1;&#x6570;+1</li>
+<li>&#x4F7F;&#x7528;<code>__weak</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x7531;&#x4E8E;&#x5F31;&#x5F15;&#x7528;&#x5E76;&#x4E0D;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#xFF0C;&#x6240;&#x4EE5;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E0D;&#x53D8;</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ots5xplq8.bkt.clouddn.com/9635D59B-F9AD-4051-8337-1D45119D6199.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://ots5xplq8.bkt.clouddn.com/7F811E0D-1F60-4C91-BBDB-36D4FD04FB25.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -184,69 +336,119 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络安全</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/09/03/Objective-C内存管理精解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/08/读书笔记之《新商业模式创新设计》/" class="archive-article-date">
-  	<time datetime="2017-04-08T11:13:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/13/NSTimer定时器使用问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NSTimer定时器使用问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/08/读书笔记之《新商业模式创新设计》/">读书笔记之《新商业模式创新设计》</a>
-    </h1>
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2018/09/03/Objective-C内存管理精解/", 
+    sourceId: "Objective-C内存管理精解",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -269,8 +471,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
