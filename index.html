@@ -229,6 +229,134 @@
 
 
   
+    <article id="post-Objective-C中Block精解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/13/Objective-C中Block精解/">Objective-C中Block精解</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/13/Objective-C中Block精解/" class="archive-article-date">
+  	<time datetime="2018-08-13T12:09:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;"><a href="#C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;" class="headerlink" title="C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;"></a>C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;</h2><p><code>int func(int count)</code><br>&#x6B63;&#x5E38;&#x8C03;&#x7528;:<code>int result = func(10)</code><br>&#x51FD;&#x6570;&#x6307;&#x9488;&#x8C03;&#x7528;:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int (*funcPtr)(int) = &amp;func;</div><div class="line">int result = (*funcPtr)(10);</div></pre></td></tr></table></figure>
+<p>&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x662F;&#x4E0D;&#x662F;&#x89C9;&#x5F97;&#x51FD;&#x6570;&#x6307;&#x9488;&#x8C03;&#x7528;&#x6709;&#x70B9;&#x50CF;Block&#x7684;&#x5473;&#x9053;&#x4E86;</p>
+<h2 id="typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;"><a href="#typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;" class="headerlink" title="typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;"></a>typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;</h2><p><code>typedef int (^blk)(int)</code><br>&#x7ED9;&#x8FD9;&#x4E2A;<code>block</code>&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;<code>blk</code>&#x7684;&#x540D;&#x79F0;</p>
+<h2 id="Block&#x7684;&#x5B9E;&#x8D28;"><a href="#Block&#x7684;&#x5B9E;&#x8D28;" class="headerlink" title="Block&#x7684;&#x5B9E;&#x8D28;"></a>Block&#x7684;&#x5B9E;&#x8D28;</h2><p>&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x6307;&#x9488;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void (^blk)(void) = ^{printf(&quot;Block&quot;);};</div></pre></td></tr></table></figure>
+<p><code>Block</code>&#x7ED3;&#x6784;&#x4F53;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;!-- more --&gt;</div><div class="line">struct __block_impl {</div><div class="line">      void *isa;</div><div class="line">      int  Flags;</div><div class="line">      int  Reserved;</div><div class="line">      void *FuncPtr;//&#x51FD;&#x6570;&#x6307;&#x9488;</div><div class="line">}</div><div class="line">struct __main_block_impl_0 {</div><div class="line">      struct __block_impl  impl;</div><div class="line">      struct __main_block_desc_0 * Desc;</div><div class="line">      //&#x7ED3;&#x6784;&#x4F53;&#x521D;&#x59CB;&#x5316;</div><div class="line">      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0){</div><div class="line">              impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">              impl.Flags = flags;</div><div class="line">              impl.FuncPtr = fp;</div><div class="line">              Desc = desc;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x4E5F;&#x6709;&#x4E2A;<code>isa</code>&#x6307;&#x9488;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;<code>OC</code>&#x7684;&#x5BF9;&#x8C61;&#x4E5F;&#x6709;<code>isa</code>&#x6307;&#x9488;&#xFF0C;&#x8BF4;&#x660E;<code>Block</code>&#x5176;&#x5B9E;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">{printf(&quot;Block&quot;);};</div><div class="line">&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;</div><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself){</div><div class="line">    printf(&quot;Block&quot;);</div><div class="line">}</div></pre></td></tr></table></figure>
+<p><code>Block</code>&#x7C7B;&#x578B;&#x53D8;&#x91CF;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blk= &amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">static struct __main_block_desc_0  __main_block_desc_0_DATA = {</div><div class="line">      0,</div><div class="line">      sizeof(struct __main_block_impl_0)</div><div class="line">};</div><div class="line">__main_block_desc_0_DATA&#x5373;&#x662F;&#x7ED3;&#x6784;&#x4F53;&#x5B9E;&#x4F8B;__main_block_impl_0&#x7684;&#x5927;&#x5C0F;</div></pre></td></tr></table></figure>
+<h2 id="Block&#x7684;&#x8C03;&#x7528;&#x5B9E;&#x8D28;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#x6240;&#x6307;&#x5411;&#x7684;&#x51FD;&#x6570;blk"><a href="#Block&#x7684;&#x8C03;&#x7528;&#x5B9E;&#x8D28;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#x6240;&#x6307;&#x5411;&#x7684;&#x51FD;&#x6570;blk" class="headerlink" title="Block&#x7684;&#x8C03;&#x7528;&#x5B9E;&#x8D28;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#x6240;&#x6307;&#x5411;&#x7684;&#x51FD;&#x6570;blk();"></a>Block&#x7684;&#x8C03;&#x7528;&#x5B9E;&#x8D28;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6307;&#x9488;&#x6240;&#x6307;&#x5411;&#x7684;&#x51FD;&#x6570;blk();</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#xFF08;*blk-&gt;impl.FuncPtr&#xFF09;(blk)</div></pre></td></tr></table></figure>
+<h2 id="&#x622A;&#x83B7;&#x53D8;&#x91CF;"><a href="#&#x622A;&#x83B7;&#x53D8;&#x91CF;" class="headerlink" title="&#x622A;&#x83B7;&#x53D8;&#x91CF;"></a>&#x622A;&#x83B7;&#x53D8;&#x91CF;</h2><h3 id="&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#xFF08;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF09;&#x3010;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x5176;&#x503C;&#x3011;"><a href="#&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#xFF08;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF09;&#x3010;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x5176;&#x503C;&#x3011;" class="headerlink" title="&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#xFF08;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF09;&#x3010;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x5176;&#x503C;&#x3011;"></a>&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#xFF08;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF09;&#x3010;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x5176;&#x503C;&#x3011;</h3><p>&#x88AB;&#x622A;&#x83B7;&#x7684;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x88AB;&#x4FDD;&#x5B58;&#x5230;<code>__main_block_impl_0</code>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#xFF0C;&#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">struct __main_block_impl_0 {</div><div class="line">      struct __block_impl  impl;</div><div class="line">      struct __main_block_desc_0 * Desc;</div><div class="line">      const char *fmt;</div><div class="line">      int val;//&#x88AB;&#x622A;&#x83B7;&#x7684;&#x53D8;&#x91CF;</div><div class="line">      //&#x7ED3;&#x6784;&#x4F53;&#x521D;&#x59CB;&#x5316;</div><div class="line">      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0){</div><div class="line">              impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">              impl.Flags = flags;</div><div class="line">              impl.FuncPtr = fp;</div><div class="line">              Desc = desc;</div><div class="line">              //&#x622A;&#x83B7;&#x7684;&#x503C;&#x5728;&#x8FD9;&#x91CC;&#x521D;&#x59CB;&#x5316;</div><div class="line">              fmt = &quot;block&quot;;</div><div class="line">              val = 10;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p><code>block</code>&#x51FD;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x4EE5;&#x4E0B;&#x51FD;&#x6570;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">{printf(fmt, val);};</div></pre></td></tr></table></figure>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself){</div><div class="line">    const char *fmt = __cself-&gt;fmt;</div><div class="line">    int val = __cself-&gt;val;</div><div class="line">    printf(fmt, val);</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="&#x9759;&#x6001;&#x53D8;&#x91CF;&#x3010;&#x7531;&#x4E8E;&#x622A;&#x83B7;&#x7684;&#x662F;&#x8BE5;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6240;&#x4EE5;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x53EF;&#x4EE5;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3011;"><a href="#&#x9759;&#x6001;&#x53D8;&#x91CF;&#x3010;&#x7531;&#x4E8E;&#x622A;&#x83B7;&#x7684;&#x662F;&#x8BE5;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6240;&#x4EE5;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x53EF;&#x4EE5;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3011;" class="headerlink" title="&#x9759;&#x6001;&#x53D8;&#x91CF;&#x3010;&#x7531;&#x4E8E;&#x622A;&#x83B7;&#x7684;&#x662F;&#x8BE5;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6240;&#x4EE5;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x53EF;&#x4EE5;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3011;"></a>&#x9759;&#x6001;&#x53D8;&#x91CF;&#x3010;&#x7531;&#x4E8E;&#x622A;&#x83B7;&#x7684;&#x662F;&#x8BE5;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6240;&#x4EE5;&#x5728;block&#x51FD;&#x6570;&#x4E2D;&#x53EF;&#x4EE5;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3011;</h3><p>&#x4E0E;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x4E0D;&#x540C;&#xFF0C;&#x88AB;&#x622A;&#x83B7;&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#x88AB;&#x4FDD;&#x5B58;&#x5230;<code>__main_block_impl_0</code>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#xFF0C;&#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">static int static_val = 3;</div><div class="line">struct __main_block_impl_0 {</div><div class="line">      struct __block_impl  impl;</div><div class="line">      struct __main_block_desc_0 * Desc;</div><div class="line">      int *static_val;//&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;</div><div class="line">      //&#x7ED3;&#x6784;&#x4F53;&#x521D;&#x59CB;&#x5316;</div><div class="line">      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0, int *static_val){</div><div class="line">              impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">              impl.Flags = flags;</div><div class="line">              impl.FuncPtr = fp;</div><div class="line">              Desc = desc;</div><div class="line">              //&#x622A;&#x83B7;&#x7684;&#x503C;&#x5728;&#x8FD9;&#x91CC;&#x521D;&#x59CB;&#x5316;</div><div class="line">              static_val = static_val;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p><code>block</code>&#x51FD;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x4EE5;&#x4E0B;&#x51FD;&#x6570;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">static int static_val = 3;</div><div class="line">{ static_val = 10;};</div></pre></td></tr></table></figure>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself){</div><div class="line">    int *static_val = __cself-&gt;static_val;</div><div class="line">    *static_val = 10;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;"><a href="#&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;" class="headerlink" title="&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;"></a>&#x9759;&#x6001;&#x5168;&#x5C40;&#x53D8;&#x91CF;</h3><p>&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x5728;&#x5168;&#x5C40;&#x533A;&#xFF0C;&#x4E0D;&#x5F52;<code>block</code>&#x7BA1;&#x4E0D;&#x4F1A;&#x88AB;&#x4FDD;&#x5B58;&#x5230;<code>block</code>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x3002;&#x5728;<code>block</code>&#x51FD;&#x6570;&#x4E2D;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x90FD;&#x884C;</p>
+<h3 id="&#x5168;&#x5C40;&#x53D8;&#x91CF;"><a href="#&#x5168;&#x5C40;&#x53D8;&#x91CF;" class="headerlink" title="&#x5168;&#x5C40;&#x53D8;&#x91CF;"></a>&#x5168;&#x5C40;&#x53D8;&#x91CF;</h3><p>&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x5728;&#x5168;&#x5C40;&#x533A;&#xFF0C;&#x4E0D;&#x5F52;<code>block</code>&#x7BA1;&#x4E0D;&#x4F1A;&#x88AB;&#x4FDD;&#x5B58;&#x5230;<code>block</code>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#x3002;&#x5728;<code>block</code>&#x51FD;&#x6570;&#x4E2D;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x90FD;&#x884C;</p>
+<h2 id="&#x622A;&#x83B7;&#x5BF9;&#x8C61;"><a href="#&#x622A;&#x83B7;&#x5BF9;&#x8C61;" class="headerlink" title="&#x622A;&#x83B7;&#x5BF9;&#x8C61;"></a>&#x622A;&#x83B7;&#x5BF9;&#x8C61;</h2><p>&#x622A;&#x83B7;&#x5BF9;&#x8C61;&#x65F6;<code>Block</code>&#x7ED3;&#x6784;&#x4F53;&#x4F1A;&#x591A;&#x51FA;&#x4E00;&#x4E2A;<code>__strong</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x5BF9;&#x8C61;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">struct __main_block_impl_0 {</div><div class="line">   struct __block_impl impl;</div><div class="line">   struct __main_block_desc_0 *Desc;</div><div class="line">   id __strong array;//&#x88AB;&#x622A;&#x83B7;&#x7684;&#x5BF9;&#x8C61;</div><div class="line">   //&#x7ED3;&#x6784;&#x4F53;&#x521D;&#x59CB;&#x5316;</div><div class="line">      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, id __strong _array,int flags=0,){</div><div class="line">              impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">              impl.Flags = flags;</div><div class="line">              impl.FuncPtr = fp;</div><div class="line">              Desc = desc;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6B64;&#x5916;&#x8FD8;&#x4F1A;&#x591A;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;<br>&#x5F53;<code>Block</code>&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;&#x65F6;&#x8C03;&#x7528;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself, id obj);</div></pre></td></tr></table></figure>
+<p>&#x5F53;<code>Block</code>&#x5E9F;&#x5F03;&#x65F6;&#x8C03;&#x7528;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static void __main_block_dispose_0(struct __main_block_impl_0 *src);</div></pre></td></tr></table></figure>
+<h2 id="block&#x8BF4;&#x660E;&#x7B26;"><a href="#block&#x8BF4;&#x660E;&#x7B26;" class="headerlink" title="__block&#x8BF4;&#x660E;&#x7B26;"></a>__block&#x8BF4;&#x660E;&#x7B26;</h2><p>&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x5728;<code>block</code>&#x51FD;&#x6570;&#x4E2D;&#x662F;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x5176;&#x503C;&#x7684;&#xFF0C;&#x90A3;&#x5982;&#x679C;&#x8981;&#x6539;&#x53D8;&#x5176;&#x503C;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;<br>&#x5728;&#x53D8;&#x91CF;&#x524D;&#x52A0;&#x4E2A;<code>__block</code>&#x4FEE;&#x9970;&#x7B26;&#x5C31;&#x884C;&#x4E86;<br><code>__block</code>&#x7C7B;&#x4F3C;&#x4E8E;<code>static</code>&#xFF0C;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x8BE5;&#x53D8;&#x91CF;&#x8BBE;&#x7F6E;&#x5230;&#x54EA;&#x4E2A;&#x5B58;&#x50A8;&#x57DF;&#x4E2D;&#xFF0C;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">__block int val = 10;</div></pre></td></tr></table></figure>
+<p>&#x90A3;&#x4E48;&#x52A0;&#x4E86;<code>__block</code>&#x4FEE;&#x9970;&#x7B26;&#x7684;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x5C06;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">__Block_byref_val_0 val = {</div><div class="line">      0,</div><div class="line">      &amp;val,</div><div class="line">      0,</div><div class="line">      sizeof(__Block_byref_val_0),</div><div class="line">      10</div><div class="line">}</div><div class="line">struct __Block_byref_val_0 {</div><div class="line">      void *__isa;</div><div class="line">      __Block_byref_val_0 *__forwarding;//&#x6307;&#x5411;&#x7ED3;&#x6784;&#x4F53;&#x81EA;&#x8EAB;&#x7684;&#x6307;&#x9488;</div><div class="line">      int flags;</div><div class="line">      int __size;</div><div class="line">      int val;//&#x53D8;&#x91CF;&#x7684;&#x503C;</div><div class="line">};</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x5C31;&#x8DDF;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x8981;&#x628A;<code>__Block_byref_val_0</code>&#x7684;&#x5730;&#x5740;&#x4FDD;&#x5B58;&#x5230;<code>__main_block_impl_0</code>&#x7ED3;&#x6784;&#x4F53;&#x4E2D;&#xFF0C;&#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">struct __main_block_impl_0 {</div><div class="line">      struct __block_impl  impl;</div><div class="line">      struct __main_block_desc_0 * Desc;</div><div class="line">      __Block_byref_val_0 *val;</div><div class="line">      //&#x7ED3;&#x6784;&#x4F53;&#x521D;&#x59CB;&#x5316;</div><div class="line">      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0, __Block_byref_val_0 *val){</div><div class="line">              impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">              impl.Flags = flags;</div><div class="line">              impl.FuncPtr = fp;</div><div class="line">              Desc = desc;</div><div class="line">              //&#x622A;&#x83B7;&#x7684;&#x503C;&#x5728;&#x8FD9;&#x91CC;&#x521D;&#x59CB;&#x5316;</div><div class="line">              val = val;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p><code>block</code>&#x51FD;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x4EE5;&#x4E0B;&#x51FD;&#x6570;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">__block int val = 10;</div><div class="line">{ val = 10;};</div></pre></td></tr></table></figure>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself){</div><div class="line">    __Block_byref_val_0 *val = __cself-&gt;val;</div><div class="line">    val -&gt;__forwarding-&gt;val = 10;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h2 id="Block&#x5B58;&#x50A8;&#x57DF;"><a href="#Block&#x5B58;&#x50A8;&#x57DF;" class="headerlink" title="Block&#x5B58;&#x50A8;&#x57DF;"></a>Block&#x5B58;&#x50A8;&#x57DF;</h2><h3 id="NSConcreteGlobalBlock"><a href="#NSConcreteGlobalBlock" class="headerlink" title="__NSConcreteGlobalBlock"></a>__NSConcreteGlobalBlock</h3><p>&#x5168;&#x5C40;<code>block</code>&#xFF0C;&#x5B58;&#x653E;&#x5728;<code>data</code>&#x533A;&#xFF0C;&#x4EE5;&#x4E0B;&#x4E3A;&#x5168;&#x5C40;<code>block</code>&#xFF1A;</p>
+<ol>
+<li>&#x8BB0;&#x8FF0;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x65B9;&#x6709;<code>Block</code>&#x8BED;&#x6CD5;&#x65F6;</li>
+<li><code>Block</code>&#x8BED;&#x6CD5;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x4E0D;&#x4F7F;&#x7528;&#x5E94;&#x622A;&#x83B7;&#x7684;&#x81EA;&#x52A8;&#x53D8;&#x91CF;&#x65F6;<h3 id="NSConcreteStackBlock"><a href="#NSConcreteStackBlock" class="headerlink" title="__NSConcreteStackBlock"></a>__NSConcreteStackBlock</h3>&#x6808;<code>block</code>&#xFF0C;&#x5B58;&#x653E;&#x5728;&#x6808;&#x533A;&#xFF0C;&#x4F5C;&#x7528;&#x57DF;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x81EA;&#x52A8;&#x56DE;&#x6536;&#xFF0C;&#x9664;&#x4E86;&#x4EE5;&#x4E0A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x60C5;&#x51B5;&#x4E4B;&#x5916;&#xFF0C;&#x5176;&#x4F59;&#x7684;<code>block</code>&#x90FD;&#x662F;&#x6808;<code>block</code><h3 id="NSConcreteMallocBlock"><a href="#NSConcreteMallocBlock" class="headerlink" title="__NSConcreteMallocBlock"></a>__NSConcreteMallocBlock</h3>&#x5806;<code>block</code>&#xFF0C;&#x5B58;&#x653E;&#x5728;&#x5806;&#x533A;&#xFF0C;&#x7531;&#x7A0B;&#x5E8F;&#x733F;&#x624B;&#x52A8;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;&#x8FD9;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;<code>block</code>&#x5938;&#x4F5C;&#x7528;&#x57DF;&#x4F7F;&#x7528;&#xFF0C;&#x5C06;&#x6808;&#x4E2D;&#x7684;<code>block</code>&#x62F7;&#x8D1D;&#x5230;&#x5806;&#x4E0A;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x62F7;&#x8D1D;&#x3002;&#x6709;&#x65F6;&#x4E5F;&#x8981;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x62F7;&#x8D1D;<h4 id="&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4E0B;Block&#x4F1A;&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;"><a href="#&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4E0B;Block&#x4F1A;&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;" class="headerlink" title="&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4E0B;Block&#x4F1A;&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;"></a>&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4E0B;Block&#x4F1A;&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;</h4></li>
+</ol>
+<ul>
+<li>&#x8C03;&#x7528;<code>Block</code>&#x7684;<code>copy</code>&#x65B9;&#x6CD5;</li>
+<li><code>Block</code>&#x4F5C;&#x4E3A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x8FD4;&#x56DE;&#x65F6;</li>
+<li>&#x5C06;<code>Block</code>&#x8D4B;&#x503C;&#x7ED9;&#x9644;&#x6709;<code>__strong</code>&#x4FEE;&#x9970;&#x7B26;<code>id</code>&#x7C7B;&#x578B;&#x7684;&#x7C7B;&#x6216;<code>Block</code>&#x7C7B;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x65F6;</li>
+<li>&#x5728;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x542B;&#x6709;<code>usingBlock</code>&#x7684;<code>cocoa</code>&#x6846;&#x67B6;&#x65B9;&#x6CD5;&#x6216;<code>Grand Central Dispatch</code>&#x7684;<code>API</code>&#x4E2D;&#x4F20;&#x9012;<code>Block</code>&#x65F6;<h2 id="block&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x5B58;&#x50A8;&#x57DF;"><a href="#block&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x5B58;&#x50A8;&#x57DF;" class="headerlink" title="__block&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x5B58;&#x50A8;&#x57DF;"></a>__block&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x5B58;&#x50A8;&#x57DF;</h2>&#x4F7F;&#x7528;<code>__block</code>&#x53D8;&#x91CF;&#xFF0C;&#x5F53;<code>block</code>&#x4ECE;&#x6808;&#x590D;&#x5236;&#x5230;&#x5806;&#x65F6;&#xFF0C;<code>__block</code>&#x53D8;&#x91CF;&#x4E5F;&#x4F1A;&#x4E00;&#x5E76;&#x590D;&#x5236;&#x5230;&#x5806;&#x4E0A;&#xFF0C;&#x5E76;&#x88AB;<code>Block</code>&#x6301;&#x6709;&#xFF0C;&#x5F53;<code>Block</code>&#x88AB;&#x5E9F;&#x5F03;&#x65F6;<code>__block</code>&#x53D8;&#x91CF;&#x4E5F;&#x5E9F;&#x5F03;</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/13/Objective-C中Block精解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-NSTimer定时器使用问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -714,83 +842,9 @@
 
 
   
-    <article id="post-HTTP请求错误码大全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/03/HTTP请求错误码大全/">HTTP请求错误码大全</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/03/HTTP请求错误码大全/" class="archive-article-date">
-  	<time datetime="2017-12-03T06:52:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">NS_ENUM(NSInteger)</div><div class="line">{</div><div class="line">    NSURLErrorUnknown =            -1,</div><div class="line">    NSURLErrorCancelled =          -999,</div><div class="line">    NSURLErrorBadURL =              -1000,</div><div class="line">    NSURLErrorTimedOut =            -1001,</div><div class="line">    NSURLErrorUnsupportedURL =          -1002,</div><div class="line">    NSURLErrorCannotFindHost =          -1003,</div><div class="line">    NSURLErrorCannotConnectToHost =        -1004,</div><div class="line">    NSURLErrorNetworkConnectionLost =      -1005,</div><div class="line">    NSURLErrorDNSLookupFailed =        -1006,</div><div class="line">    NSURLErrorHTTPTooManyRedirects =        -1007,</div><div class="line">    NSURLErrorResourceUnavailable =        -1008,</div><div class="line">    NSURLErrorNotConnectedToInternet =      -1009,</div><div class="line">    NSURLErrorRedirectToNonExistentLocation =  -1010,</div><div class="line">    NSURLErrorBadServerResponse =      -1011,</div><div class="line">    NSURLErrorUserCancelledAuthentication =    -1012,</div><div class="line">    NSURLErrorUserAuthenticationRequired =  -1013,</div><div class="line">    NSURLErrorZeroByteResource =        -1014,</div><div class="line">    NSURLErrorCannotDecodeRawData =            -1015,</div><div class="line">    NSURLErrorCannotDecodeContentData =        -1016,</div><div class="line">    NSURLErrorCannotParseResponse =            -1017,</div><div class="line">    NSURLErrorAppTransportSecurityRequiresSecureConnection NS_ENUM_AVAILABLE(10_11, 9_0) = -1022,</div><div class="line">    NSURLErrorFileDoesNotExist =        -1100,</div><div class="line">    NSURLErrorFileIsDirectory =        -1101,</div><div class="line">    NSURLErrorNoPermissionsToReadFile =    -1102,</div><div class="line">    NSURLErrorDataLengthExceedsMaximum NS_ENUM_AVAILABLE(10_5, 2_0) =  -1103,</div><div class="line"></div><div class="line">    // SSL errors</div><div class="line">    NSURLErrorSecureConnectionFailed =      -1200,</div><div class="line">    NSURLErrorServerCertificateHasBadDate =    -1201,</div><div class="line">    NSURLErrorServerCertificateUntrusted =  -1202,</div><div class="line">    NSURLErrorServerCertificateHasUnknownRoot = -1203,</div><div class="line">    NSURLErrorServerCertificateNotYetValid =    -1204,</div><div class="line">    NSURLErrorClientCertificateRejected =  -1205,</div><div class="line">    NSURLErrorClientCertificateRequired =  -1206,</div><div class="line">    NSURLErrorCannotLoadFromNetwork =      -2000,</div><div class="line"></div><div class="line">    // Download and file I/O errors</div><div class="line">    NSURLErrorCannotCreateFile =        -3000,</div><div class="line">    NSURLErrorCannotOpenFile =          -3001,</div><div class="line">    NSURLErrorCannotCloseFile =        -3002,</div><div class="line">    NSURLErrorCannotWriteToFile =      -3003,</div><div class="line">    NSURLErrorCannotRemoveFile =        -3004,</div><div class="line">    NSURLErrorCannotMoveFile =          -3005,</div><div class="line">    NSURLErrorDownloadDecodingFailedMidStream = -3006,</div><div class="line">    NSURLErrorDownloadDecodingFailedToComplete =-3007,</div><div class="line"></div><div class="line">    NSURLErrorInternationalRoamingOff NS_ENUM_AVAILABLE(10_7, 3_0) =        -1018,</div><div class="line">    NSURLErrorCallIsActive NS_ENUM_AVAILABLE(10_7, 3_0) =                    -1019,</div><div class="line">    NSURLErrorDataNotAllowed NS_ENUM_AVAILABLE(10_7, 3_0) =                  -1020,</div><div class="line">    NSURLErrorRequestBodyStreamExhausted NS_ENUM_AVAILABLE(10_7, 3_0) =      -1021,</div><div class="line"></div><div class="line">    NSURLErrorBackgroundSessionRequiresSharedContainer NS_ENUM_AVAILABLE(10_10, 8_0) = -995,</div><div class="line">    NSURLErrorBackgroundSessionInUseByAnotherProcess NS_ENUM_AVAILABLE(10_10, 8_0) = -996,</div><div class="line">    NSURLErrorBackgroundSessionWasDisconnected NS_ENUM_AVAILABLE(10_10, 8_0)= -997,</div><div class="line">};</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/03/HTTP请求错误码大全/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -901,15 +955,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React Native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cocoaPods</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React Native</a>
+                <a href="javascript:void(0)" class="js-tag color5">cocoaPods</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -918,10 +976,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">xcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
