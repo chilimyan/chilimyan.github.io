@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="chilim">
 <meta property="og:description" content="C&amp;#x8BED;&amp;#x8A00;&amp;#x51FD;&amp;#x6570;&amp;#x6307;&amp;#x9488;int func(int count)&amp;#x6B63;&amp;#x5E38;&amp;#x8C03;&amp;#x7528;:int result = func(10)&amp;#x51FD;&amp;#x6570;&amp;#x6307;&amp;#x9488;&amp;#x8C03;&amp;#x7528;:
 12int (*funcPtr)(int) = &amp;amp">
-<meta property="og:updated_time" content="2018-09-03T14:19:43.451Z">
+<meta property="og:updated_time" content="2018-09-11T14:41:03.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C中Block精解">
 <meta name="twitter:description" content="C&amp;#x8BED;&amp;#x8A00;&amp;#x51FD;&amp;#x6570;&amp;#x6307;&amp;#x9488;int func(int count)&amp;#x6B63;&amp;#x5E38;&amp;#x8C03;&amp;#x7528;:int result = func(10)&amp;#x51FD;&amp;#x6570;&amp;#x6307;&amp;#x9488;&amp;#x8C03;&amp;#x7528;:
@@ -176,12 +176,12 @@
       
         <h2 id="C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;"><a href="#C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;" class="headerlink" title="C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;"></a>C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x6307;&#x9488;</h2><p><code>int func(int count)</code><br>&#x6B63;&#x5E38;&#x8C03;&#x7528;:<code>int result = func(10)</code><br>&#x51FD;&#x6570;&#x6307;&#x9488;&#x8C03;&#x7528;:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">int (*funcPtr)(int) = &amp;func;</div><div class="line">int result = (*funcPtr)(10);</div></pre></td></tr></table></figure>
-<p>&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x662F;&#x4E0D;&#x662F;&#x89C9;&#x5F97;&#x51FD;&#x6570;&#x6307;&#x9488;&#x8C03;&#x7528;&#x6709;&#x70B9;&#x50CF;Block&#x7684;&#x5473;&#x9053;&#x4E86;</p>
+<p>&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x662F;&#x4E0D;&#x662F;&#x89C9;&#x5F97;&#x51FD;&#x6570;&#x6307;&#x9488;&#x8C03;&#x7528;&#x6709;&#x70B9;&#x50CF;Block&#x7684;&#x5473;&#x9053;&#x4E86;<br><a id="more"></a></p>
 <h2 id="typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;"><a href="#typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;" class="headerlink" title="typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;"></a>typedef&#x7ED9;&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;&#x522B;&#x540D;</h2><p><code>typedef int (^blk)(int)</code><br>&#x7ED9;&#x8FD9;&#x4E2A;<code>block</code>&#x7C7B;&#x578B;&#x53D6;&#x4E00;&#x4E2A;<code>blk</code>&#x7684;&#x540D;&#x79F0;</p>
 <h2 id="Block&#x7684;&#x5B9E;&#x8D28;"><a href="#Block&#x7684;&#x5B9E;&#x8D28;" class="headerlink" title="Block&#x7684;&#x5B9E;&#x8D28;"></a>Block&#x7684;&#x5B9E;&#x8D28;</h2><p>&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x7ED3;&#x6784;&#x4F53;<code>__main_block_impl_0</code>&#x6307;&#x9488;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void (^blk)(void) = ^{printf(&quot;Block&quot;);};</div></pre></td></tr></table></figure>
 <p><code>Block</code>&#x7ED3;&#x6784;&#x4F53;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;!-- more --&gt;</div><div class="line">struct __block_impl {</div><div class="line">      void *isa;</div><div class="line">      int  Flags;</div><div class="line">      int  Reserved;</div><div class="line">      void *FuncPtr;//&#x51FD;&#x6570;&#x6307;&#x9488;</div><div class="line">}</div><div class="line">struct __main_block_impl_0 {</div><div class="line">      struct __block_impl  impl;</div><div class="line">      struct __main_block_desc_0 * Desc;</div><div class="line">      //&#x7ED3;&#x6784;&#x4F53;&#x521D;&#x59CB;&#x5316;</div><div class="line">      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0){</div><div class="line">              impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">              impl.Flags = flags;</div><div class="line">              impl.FuncPtr = fp;</div><div class="line">              Desc = desc;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">struct __block_impl {</div><div class="line">      void *isa;</div><div class="line">      int  Flags;</div><div class="line">      int  Reserved;</div><div class="line">      void *FuncPtr;//&#x51FD;&#x6570;&#x6307;&#x9488;</div><div class="line">}</div><div class="line">struct __main_block_impl_0 {</div><div class="line">      struct __block_impl  impl;</div><div class="line">      struct __main_block_desc_0 * Desc;</div><div class="line">      //&#x7ED3;&#x6784;&#x4F53;&#x521D;&#x59CB;&#x5316;</div><div class="line">      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0){</div><div class="line">              impl.isa = &amp;_NSConcreteStackBlock;</div><div class="line">              impl.Flags = flags;</div><div class="line">              impl.FuncPtr = fp;</div><div class="line">              Desc = desc;</div><div class="line">     }</div><div class="line">}</div></pre></td></tr></table></figure>
 <p>&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x4E5F;&#x6709;&#x4E2A;<code>isa</code>&#x6307;&#x9488;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;<code>OC</code>&#x7684;&#x5BF9;&#x8C61;&#x4E5F;&#x6709;<code>isa</code>&#x6307;&#x9488;&#xFF0C;&#x8BF4;&#x660E;<code>Block</code>&#x5176;&#x5B9E;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">{printf(&quot;Block&quot;);};</div><div class="line">&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;</div><div class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself){</div><div class="line">    printf(&quot;Block&quot;);</div><div class="line">}</div></pre></td></tr></table></figure>
 <p><code>Block</code>&#x7C7B;&#x578B;&#x53D8;&#x91CF;</p>
@@ -513,15 +513,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-iOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cocoaPods</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DCloud</a>
               </li>
              
               <li class="article-tag-list-item">
